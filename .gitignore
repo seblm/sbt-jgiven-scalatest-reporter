@@ -1,11 +1,3 @@
-*.class
-*.log
-
+.idea
 target
 project/project
-project/target
-.cache
-.classpath
-.project
-.settings
-bin

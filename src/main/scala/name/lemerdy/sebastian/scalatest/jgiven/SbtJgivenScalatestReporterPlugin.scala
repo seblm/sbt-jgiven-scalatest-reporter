@@ -1,10 +1,9 @@
 package name.lemerdy.sebastian.scalatest.jgiven
 
 import sbt._
-import sbt.Keys._
 import sbt.plugins.JvmPlugin
 
-object SbtjgivenscalatestreporterPlugin extends AutoPlugin {
+object SbtJgivenScalatestReporterPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
   override def requires = JvmPlugin
