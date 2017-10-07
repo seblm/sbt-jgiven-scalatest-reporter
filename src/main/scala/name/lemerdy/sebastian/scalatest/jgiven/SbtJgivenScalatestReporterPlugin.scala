@@ -1,26 +1,19 @@
 package name.lemerdy.sebastian.scalatest.jgiven
 
+import sbt.Keys._
 import sbt._
-import sbt.plugins.JvmPlugin
 
 object SbtJgivenScalatestReporterPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
-  override def requires = JvmPlugin
-
-  object autoImport {
-    val exampleSetting = settingKey[String]("A setting that is automatically imported to the build")
-    val exampleTask = taskKey[String]("A task that is automatically imported to the build")
-  }
-
-  import autoImport._
 
   override lazy val projectSettings = Seq(
-    exampleSetting := "just an example",
-    exampleTask := "computed from example setting: " + exampleSetting.value
+    testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-C", "name.lemerdy.sebastian.scalatest.jgiven.JGivenJsonReporter"),
+    libraryDependencies += Defaults.sbtPluginExtra("name.lemerdy.sebastian" % "sbt-jgiven-scalatest-reporter" % "0.1-SNAPSHOT", "1.0", "2.12") % Test
   )
 
   override lazy val buildSettings = Seq()
 
   override lazy val globalSettings = Seq()
+
 }

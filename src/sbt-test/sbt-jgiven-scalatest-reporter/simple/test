@@ -1,1 +1,2 @@
-> show exampleTask
+> test
+$ exists target/jgiven-reports/name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec.json
