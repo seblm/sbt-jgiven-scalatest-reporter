@@ -6,6 +6,12 @@ Sbt plugin that generates jgiven html5 reports based on scalatest tests executio
 
 This plugin requires sbt 1.0.0+
 
+## Example
+
+Here is what you will get starting from scalatest FeatureSpec basic example:
+
+![Example of produced report](/../assets/example-screenshot.png?raw=true)
+
 ### Testing
 
 Run `scripted` for [sbt script tests](http://www.scala-sbt.org/0.13/docs/Testing-sbt-plugins.html).
