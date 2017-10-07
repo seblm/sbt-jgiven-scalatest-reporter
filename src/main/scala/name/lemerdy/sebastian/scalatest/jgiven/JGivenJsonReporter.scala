@@ -4,6 +4,7 @@ import java.nio.charset.Charset
 import java.nio.file.{Files, Paths}
 import java.time.Instant
 
+import com.tngtech.jgiven.report.html5.{Html5ReportConfig, Html5ReportGenerator}
 import com.tngtech.jgiven.report.model.ExecutionStatus.SUCCESS
 import com.tngtech.jgiven.report.model.StepStatus.PASSED
 import com.tngtech.jgiven.report.model._
@@ -19,15 +20,28 @@ class JGivenJsonReporter extends ResourcefulReporter {
 
   private var reports: Map[String, Report] = Map.empty[String, Report]
 
-  override def dispose(): Unit =
+  override def dispose(): Unit = {
+    val reportsDirectory = Paths.get("target", "jgiven-reports")
+
+    val jsonReportsDirectory = reportsDirectory.resolve("json")
+    Files.createDirectories(jsonReportsDirectory)
     reports.values.foreach { report =>
-      val directory = Paths.get("target", "jgiven-reports")
-      Files.createDirectories(directory)
       Files.write(
-        directory.resolve(s"${report.model.getClassName}.json"),
+        jsonReportsDirectory.resolve(s"${report.model.getClassName}.json"),
         reportModelToJsonString(report.model).getBytes(Charset.forName("UTF-8"))
       )
     }
+
+    if (reports.nonEmpty) {
+      val htmlReportDirectory = reportsDirectory.resolve("html")
+      Files.createDirectories(htmlReportDirectory)
+      val reportGenerator = new Html5ReportGenerator()
+      val config = new Html5ReportConfig()
+      config.setSourceDir(reportsDirectory.toFile)
+      config.setTargetDir(htmlReportDirectory.toFile)
+      reportGenerator.generateWithConfig(config)
+    }
+  }
 
   private def reportModelToJsonString(reportModel: ReportModel): String =
     s"""{

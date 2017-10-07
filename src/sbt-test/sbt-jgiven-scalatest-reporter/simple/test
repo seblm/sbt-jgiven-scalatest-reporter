@@ -1,2 +1,4 @@
 > test
-$ exists target/jgiven-reports/name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec.json
+$ exists target/jgiven-reports/json/name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec.json
+$ exists target/jgiven-reports/html/index.html
+$ exists target/jgiven-reports/html/data/data0.js

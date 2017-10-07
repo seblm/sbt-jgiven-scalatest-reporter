@@ -8,7 +8,9 @@ sbtPlugin := true
 import Dependencies._
 
 libraryDependencies += `jgiven-core`
+libraryDependencies += `jgiven-html5-report`
 libraryDependencies += scalatest
+libraryDependencies += `slf4j-simple`
 
 bintrayPackageLabels := Seq("sbt","plugin")
 bintrayVcsUrl := Some("""git@github.com:seblm/sbt-jgiven-scalatest-reporter.git""")
