@@ -1,4 +1,4 @@
-# sbt-jgiven-scalatest-reporter
+# sbt-jgiven-scalatest-reporter [![Build Status](https://travis-ci.org/seblm/sbt-jgiven-scalatest-reporter.svg?branch=master)](https://travis-ci.org/seblm/sbt-jgiven-scalatest-reporter)
 
 Sbt plugin that generates jgiven html5 reports based on scalatest tests execution.
 
