@@ -1,10 +1,10 @@
 package name.lemerdy.sebastian.scalatest.jgiven
 
-import java.nio.charset.Charset
 import java.nio.file.{Files, Paths}
 import java.time.Instant
 
 import com.tngtech.jgiven.report.html5.{Html5ReportConfig, Html5ReportGenerator}
+import com.tngtech.jgiven.report.json.ScenarioJsonWriter
 import com.tngtech.jgiven.report.model.ExecutionStatus.SUCCESS
 import com.tngtech.jgiven.report.model.StepStatus.PASSED
 import com.tngtech.jgiven.report.model._
@@ -12,7 +12,6 @@ import org.scalatest.ResourcefulReporter
 import org.scalatest.events._
 
 import scala.collection.Map
-import scala.collection.JavaConverters._
 
 class JGivenJsonReporter extends ResourcefulReporter {
 
@@ -26,10 +25,8 @@ class JGivenJsonReporter extends ResourcefulReporter {
     val jsonReportsDirectory = reportsDirectory.resolve("json")
     Files.createDirectories(jsonReportsDirectory)
     reports.values.foreach { report =>
-      Files.write(
-        jsonReportsDirectory.resolve(s"${report.model.getClassName}.json"),
-        reportModelToJsonString(report.model).getBytes(Charset.forName("UTF-8"))
-      )
+      val reportFile = jsonReportsDirectory.resolve(s"${report.model.getClassName}.json")
+      new ScenarioJsonWriter(report.model).write(reportFile.toFile)
     }
 
     if (reports.nonEmpty) {
@@ -43,42 +40,6 @@ class JGivenJsonReporter extends ResourcefulReporter {
     }
   }
 
-  private def reportModelToJsonString(reportModel: ReportModel): String =
-    s"""{
-       |  "className": "${reportModel.getClassName}",
-       |  "name": "${reportModel.getName}",
-       |  "description": "${reportModel.getDescription}",
-       |  "scenarios": [${reportModel.getScenarios.asScala.map(scenarioModelToJsonString).mkString(",\n")}]
-       |}""".stripMargin
-
-  private def scenarioModelToJsonString(scenarioModel: ScenarioModel): String =
-    s"""{
-       |  "description": "${scenarioModel.getDescription}",
-       |  "casesAsTable": false,
-       |  "scenarioCases": [${scenarioModel.getScenarioCases.asScala.map(scenarioCaseModelToJsonString).mkString(",\n")}]
-       |}""".stripMargin
-
-  private def scenarioCaseModelToJsonString(scenarioCaseModel: ScenarioCaseModel): String =
-    s"""{
-       |  "caseNr": ${scenarioCaseModel.getCaseNr},
-       |  "steps": [${scenarioCaseModel.getSteps.asScala.map(stepModelToJsonString).mkString(",\n")}],
-       |  "status": "${scenarioCaseModel.getExecutionStatus}",
-       |  "durationInNanos": ${scenarioCaseModel.getDurationInNanos}
-       |}""".stripMargin
-
-  private def stepModelToJsonString(stepModel: StepModel): String =
-    s"""{
-       |  "name": "${stepModel.getName}",
-       |  "words": [${stepModel.getWords.asScala.map(wordToJsonString).mkString(",\n")}],
-       |  "status": "${stepModel.getStatus}",
-       |  "durationInNanos": "${stepModel.getDurationInNanos}"
-       |}""".stripMargin
-
-  private def wordToJsonString(word: Word): String =
-    s"""{
-       |  "value": "${word.getValue}"${if (word.isIntroWord) ",\n  \"isIntroWord\": true" else ""}
-       |}""".stripMargin
-
   override def apply(event: Event): Unit = event match {
     case SuiteStarting(_, suiteName, suiteId, suiteClassName, _, _, _, _, _, _) =>
       val report = new ReportModel()
@@ -91,7 +52,7 @@ class JGivenJsonReporter extends ResourcefulReporter {
         .flatMap(suiteId => reports.get(suiteId).map((suiteId, _)))
         .foreach { case (suiteId: String, report: Report) =>
           report.model.setDescription(Option(report.model.getDescription)
-            .map(previousDescription => s"$previousDescription\\u003c/br\\u003e$message")
+            .map(previousDescription => s"$previousDescription</br>$message")
             .getOrElse(message))
           reports = reports + (suiteId -> report)
         }
