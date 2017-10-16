@@ -13,7 +13,7 @@ import org.scalatest.events._
 
 import scala.collection.Map
 
-class JGivenJsonReporter extends ResourcefulReporter {
+class JGivenHtml5Reporter extends ResourcefulReporter {
 
   private case class Report(model: ReportModel, testStartedAtTimestamp: Option[Instant])
 
@@ -46,8 +46,8 @@ class JGivenJsonReporter extends ResourcefulReporter {
       report.setName(suiteName)
       report.setClassName(suiteClassName.getOrElse(suiteId))
       reports = reports + (suiteId -> Report(report, None))
+      ()
     case InfoProvided(_, message, nameInfo, _, _, _, _, _, _) =>
-      println(s"InfoProvided($message, ${nameInfo.get.suiteId}")
       nameInfo.map(_.suiteId)
         .flatMap(suiteId => reports.get(suiteId).map((suiteId, _)))
         .foreach { case (suiteId: String, report: Report) =>
@@ -56,11 +56,13 @@ class JGivenJsonReporter extends ResourcefulReporter {
             .getOrElse(message))
           reports = reports + (suiteId -> report)
         }
+      ()
     case TestStarting(_, _, suiteId, _, _, _, _, _, _, _, _, timeStamp) =>
       reports.get(suiteId).foreach { report =>
         val reportWithTimeStamp = report.copy(testStartedAtTimestamp = Some(Instant.ofEpochMilli(timeStamp)))
         reports = reports + (suiteId -> reportWithTimeStamp)
       }
+      ()
     case TestSucceeded(_, _, suiteId, _, _, testText, recordedEvents, _, _, _, _, _, _, timeStamp) =>
       reports.get(suiteId).foreach { report =>
         val scenario = new ScenarioModel()
@@ -89,11 +91,16 @@ class JGivenJsonReporter extends ResourcefulReporter {
             }
             step.setStatus(PASSED)
             scenarioCase.addStep(step)
+            ()
+          case MarkupProvided(_, _, _, _, _, _, _, _) =>
+            ()
         }
         scenario.addCase(scenarioCase)
         report.model.addScenarioModel(scenario)
       }
-    case otherEvent => println(s"${otherEvent.getClass.getName} is not handled")
+      ()
+    case _ =>
+      ()
   }
 
 }
