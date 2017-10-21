@@ -1,35 +1,34 @@
 package name.lemerdy.sebastian.scalatest.jgiven
 
 import java.nio.file.{Files, Paths}
-import java.time.Instant
 
 import com.tngtech.jgiven.report.html5.{Html5ReportConfig, Html5ReportGenerator}
 import com.tngtech.jgiven.report.json.ScenarioJsonWriter
-import com.tngtech.jgiven.report.model.ExecutionStatus.SUCCESS
-import com.tngtech.jgiven.report.model.StepStatus.PASSED
+import com.tngtech.jgiven.report.model.ExecutionStatus.{FAILED, SUCCESS}
 import com.tngtech.jgiven.report.model._
+import com.tngtech.jgiven.report.model.StepStatus.{PASSED, FAILED => STEP_FAILED}
 import org.scalatest.ResourcefulReporter
 import org.scalatest.events._
 
 import scala.collection.Map
+import scala.util.Try
 
 class JGivenHtml5Reporter extends ResourcefulReporter {
 
-  private case class Report(model: ReportModel, testStartedAtTimestamp: Option[Instant])
-
-  private var reports: Map[String, Report] = Map.empty[String, Report]
+  private[jgiven] var reports: Map[String, ReportModel] = Map.empty[String, ReportModel]
 
   override def dispose(): Unit = {
-    val reportsDirectory = Paths.get("target", "jgiven-reports")
+    val reportsWithScenarios = reports.values.filter(report => report.getScenarios.size() > 0)
+    if (reportsWithScenarios.nonEmpty) {
+      val reportsDirectory = Paths.get("target", "jgiven-reports")
 
-    val jsonReportsDirectory = reportsDirectory.resolve("json")
-    Files.createDirectories(jsonReportsDirectory)
-    reports.values.foreach { report =>
-      val reportFile = jsonReportsDirectory.resolve(s"${report.model.getClassName}.json")
-      new ScenarioJsonWriter(report.model).write(reportFile.toFile)
-    }
+      val jsonReportsDirectory = reportsDirectory.resolve("json")
+      Files.createDirectories(jsonReportsDirectory)
+      reportsWithScenarios.foreach { report =>
+        val reportFile = jsonReportsDirectory.resolve(s"${report.getClassName}.json")
+        new ScenarioJsonWriter(report).write(reportFile.toFile)
+      }
 
-    if (reports.nonEmpty) {
       val htmlReportDirectory = reportsDirectory.resolve("html")
       Files.createDirectories(htmlReportDirectory)
       val reportGenerator = new Html5ReportGenerator()
@@ -40,44 +39,34 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
     }
   }
 
-  override def apply(event: Event): Unit = event match {
+  override def apply(event: Event): Unit = {println(event); event match {
     case SuiteStarting(_, suiteName, suiteId, suiteClassName, _, _, _, _, _, _) =>
       val report = new ReportModel()
       report.setName(suiteName)
       report.setClassName(suiteClassName.getOrElse(suiteId))
-      reports = reports + (suiteId -> Report(report, None))
+      reports = reports + (suiteId -> report)
       ()
     case InfoProvided(_, message, nameInfo, _, _, _, _, _, _) =>
       nameInfo.map(_.suiteId)
         .flatMap(suiteId => reports.get(suiteId).map((suiteId, _)))
-        .foreach { case (suiteId: String, report: Report) =>
-          report.model.setDescription(Option(report.model.getDescription)
+        .foreach { case (suiteId: String, report: ReportModel) =>
+          report.setDescription(Option(report.getDescription)
             .map(previousDescription => s"$previousDescription</br>$message")
             .getOrElse(message))
           reports = reports + (suiteId -> report)
         }
       ()
-    case TestStarting(_, _, suiteId, _, _, _, _, _, _, _, _, timeStamp) =>
-      reports.get(suiteId).foreach { report =>
-        val reportWithTimeStamp = report.copy(testStartedAtTimestamp = Some(Instant.ofEpochMilli(timeStamp)))
-        reports = reports + (suiteId -> reportWithTimeStamp)
-      }
-      ()
-    case TestSucceeded(_, _, suiteId, _, _, testText, recordedEvents, _, _, _, _, _, _, timeStamp) =>
+    case TestFailed(_, _, _, suiteId, _, _, testText, recordedEvents, _, maybeDuration, _, _, _, _, _, _) =>
       reports.get(suiteId).foreach { report =>
         val scenario = new ScenarioModel()
         scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
-        val scenarioCase = new ScenarioCaseModel
-        scenarioCase.setStatus(SUCCESS)
-        report.testStartedAtTimestamp.foreach { testStartedAt =>
-          scenarioCase.setDurationInNanos(timeStamp - testStartedAt.toEpochMilli * 1000000)
-        }
+        val scenarioCase = new ScenarioCaseModel()
+        scenarioCase.setStatus(FAILED)
+        maybeDuration.foreach(duration => scenarioCase.setDurationInNanos(duration * 1000000))
+        scenario.addCase(scenarioCase)
         recordedEvents.foreach {
-          case InfoProvided(_, message, _, _, _, _, _, _, eventTimeStamp) =>
+          case InfoProvided(_, message, _, _, _, _, _, _, _) =>
             val step = new StepModel()
-            report.testStartedAtTimestamp.foreach { testStartedAt =>
-              step.setDurationInNanos(eventTimeStamp - testStartedAt.toEpochMilli * 1000000)
-            }
             step.setName(message)
             val words: Option[(String, String)] = message.substring(0, 5) match {
               case "Given" => Some(("Given", message.replaceFirst("^Given ", "")))
@@ -92,15 +81,46 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
             step.setStatus(PASSED)
             scenarioCase.addStep(step)
             ()
-          case MarkupProvided(_, _, _, _, _, _, _, _) =>
+          case _: MarkupProvided =>
+            ()
+        }
+        Try(scenarioCase.getSteps.get(scenarioCase.getSteps.size - 1)).map(lastStep => lastStep.setStatus(STEP_FAILED))
+        report.addScenarioModel(scenario)
+      }
+      ()
+    case TestSucceeded(_, _, suiteId, _, _, testText, recordedEvents, maybeDuration, _, _, _, _, _, _) =>
+      reports.get(suiteId).foreach { report =>
+        val scenario = new ScenarioModel()
+        scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
+        val scenarioCase = new ScenarioCaseModel
+        scenarioCase.setStatus(SUCCESS)
+        maybeDuration.foreach(duration => scenarioCase.setDurationInNanos(duration * 1000000))
+        recordedEvents.foreach {
+          case InfoProvided(_, message, _, _, _, _, _, _, _) =>
+            val step = new StepModel()
+            step.setName(message)
+            val words: Option[(String, String)] = message.substring(0, 5) match {
+              case "Given" => Some(("Given", message.replaceFirst("^Given ", "")))
+              case "When " => Some(("When", message.replaceFirst("^When ", "")))
+              case "Then " => Some(("Then", message.replaceFirst("^Then ", "")))
+              case _ => None
+            }
+            words.foreach { case (word: String, value: String) =>
+              step.addIntroWord(new Word(word, true))
+              step.addWords(new Word(value))
+            }
+            step.setStatus(PASSED)
+            scenarioCase.addStep(step)
+            ()
+          case _: MarkupProvided =>
             ()
         }
         scenario.addCase(scenarioCase)
-        report.model.addScenarioModel(scenario)
+        report.addScenarioModel(scenario)
       }
       ()
     case _ =>
       ()
-  }
+  }}
 
 }
