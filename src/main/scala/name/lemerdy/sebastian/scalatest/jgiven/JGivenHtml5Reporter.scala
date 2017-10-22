@@ -56,7 +56,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
           reports = reports + (suiteId -> report)
         }
       ()
-    case TestFailed(_, _, _, suiteId, _, _, testText, recordedEvents, _, maybeDuration, _, _, _, _, _, _) ⇒
+    case TestFailed(_, _, _, suiteId, _, _, testText, recordedEvents, maybeThrowable, maybeDuration, _, _, _, _, _, _) ⇒
       reports.get(suiteId).foreach { report ⇒
         val scenario = new ScenarioModel()
         scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
@@ -68,21 +68,25 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
           case InfoProvided(_, message, _, _, _, _, _, _, _) ⇒
             val step = new StepModel()
             step.setName(message)
-            val words: Option[(String, String)] = message.substring(0, 5) match {
-              case "Given" ⇒ Some(("Given", message.replaceFirst("^Given ", "")))
-              case "When " ⇒ Some(("When", message.replaceFirst("^When ", "")))
-              case "Then " ⇒ Some(("Then", message.replaceFirst("^Then ", "")))
-              case _ ⇒ None
+            val (maybeIntroWord, word): (Option[String], String) = message.substring(0, 5) match {
+              case "Given" ⇒ (Some("Given"), message.replaceFirst("^Given ", ""))
+              case "When " ⇒ (Some("When"), message.replaceFirst("^When ", ""))
+              case "Then " ⇒ (Some("Then"), message.replaceFirst("^Then ", ""))
+              case _ ⇒ (None, message)
             }
-            words.foreach { case (word: String, value: String) ⇒
-              step.addIntroWord(new Word(word, true))
-              step.addWords(new Word(value))
-            }
+            maybeIntroWord.foreach(introWord ⇒ step.addIntroWord(new Word(introWord, true)))
+            step.addWords(new Word(word))
             step.setStatus(PASSED)
             scenarioCase.addStep(step)
             ()
           case _: MarkupProvided ⇒
             ()
+        }
+        maybeThrowable.foreach { throwable ⇒
+          val throwableStepModel = new StepModel()
+          throwableStepModel.setName(throwable.toString)
+          throwableStepModel.addWords(new Word(throwable.toString))
+          scenarioCase.addStep(throwableStepModel)
         }
         Try(scenarioCase.getSteps.get(scenarioCase.getSteps.size - 1)).map(lastStep ⇒ lastStep.setStatus(STEP_FAILED))
         report.addScenarioModel(scenario)
@@ -99,16 +103,14 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
           case InfoProvided(_, message, _, _, _, _, _, _, _) ⇒
             val step = new StepModel()
             step.setName(message)
-            val words: Option[(String, String)] = message.substring(0, 5) match {
-              case "Given" ⇒ Some(("Given", message.replaceFirst("^Given ", "")))
-              case "When " ⇒ Some(("When", message.replaceFirst("^When ", "")))
-              case "Then " ⇒ Some(("Then", message.replaceFirst("^Then ", "")))
-              case _ ⇒ None
+            val (maybeIntroWord, word): (Option[String], String) = message.substring(0, 5) match {
+              case "Given" ⇒ (Some("Given"), message.replaceFirst("^Given ", ""))
+              case "When " ⇒ (Some("When"), message.replaceFirst("^When ", ""))
+              case "Then " ⇒ (Some("Then"), message.replaceFirst("^Then ", ""))
+              case _ ⇒ (None, message)
             }
-            words.foreach { case (word: String, value: String) ⇒
-              step.addIntroWord(new Word(word, true))
-              step.addWords(new Word(value))
-            }
+            maybeIntroWord.foreach { introWord ⇒ step.addIntroWord(new Word(introWord, true)) }
+            step.addWords(new Word(word))
             step.setStatus(PASSED)
             scenarioCase.addStep(step)
             ()

@@ -45,6 +45,28 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
       And(s"report identified by key $suiteId_ have class name $suiteId_")
       reporter.reports(suiteId_).getClassName should be(suiteId_)
     }
+
+    scenario("Register a failed test") {
+      Given("JGiven html5 reporter")
+      val reporter = new JGivenHtml5Reporter()
+      val suiteName = "TestOnUsDeposit",
+      val suiteId = "acceptance.sab.cre.onus.recette.TestOnUsDeposit"
+      val suiteClassName = Some(suiteId)
+      val eventsToApply = Seq(
+        SuiteStarting(new Ordinal(0), suiteName, suiteId, suiteClassName, None, None, None, None, "", 0L),
+        TestFailed(new Ordinal(0), "Left(List(CreError(BAS1497,BAS1497 - Le numéro d&#039;opération comptable est incorrect), CreError(BAS1498,BAS1498 - Le numéro d&#039;opération application est incorrect), CreError(BAS1506,BAS1506 - Erreur détectée dans la partie commune du CRE))) did not equal Right(CreResult(true))", ""          , suiteId,                                         None,                                               "",                                                                                                                                        "Scenario: on us deposit api is called on tdr 00005090001 SUNCARD 0,67% at accounting date J-1 return a good CreResult", Vector(), Some(new TestFailedException("Left(List(CreError(BAS1497,BAS1497 - Le numéro d&#039;opération comptable est incorrect), CreError(BAS1498,BAS1498 - Le numéro d&#039;opération application est incorrect), CreError(BAS1506,BAS1506 - Erreur détectée dans la partie commune du CRE))) did not equal Right(CreResult(true))", 0)), Some(354L),         Some(IndentedText("  Scenario: on us deposit api is called on tdr 00005090001 SUNCARD 0,67% at accounting date J-1 return a good CreResult","Scenario: on us deposit api is called on tdr 00005090001 SUNCARD 0,67% at accounting date J-1 return a good CreResult",1)),Some(SeeStackDepthException),Some("acceptance.sab.cre.onus.recette.TestOnUsDeposit"),None,"pool-7-thread-7-ScalaTest-running-TestOnUsDeposit",1508560230677L)
+      )
+
+      When(s"reporter receives event test failed")
+      applyEvents(reporter, eventsToApply)
+
+      Then(s"reports contains key $suiteId_")
+      reporter.reports should contain key suiteId_
+      And(s"report identified by key $suiteId_ have name TVSetSpec")
+      reporter.reports(suiteId_).getName should be("TVSetSpec")
+      And(s"report identified by key $suiteId_ have class name $suiteId_")
+      reporter.reports(suiteId_).getClassName should be(suiteId_)
+    }
   }
 
   after {
