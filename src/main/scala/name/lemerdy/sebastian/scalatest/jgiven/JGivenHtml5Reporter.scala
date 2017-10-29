@@ -56,9 +56,10 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
           reports = reports + (suiteId -> report)
         }
       ()
-    case TestFailed(_, _, _, suiteId, _, _, testText, recordedEvents, maybeThrowable, maybeDuration, _, _, _, _, _, _) ⇒
+    case TestFailed(_, _, _, suiteId, suiteClassName, _, testText, recordedEvents, maybeThrowable, maybeDuration, _, _, _, _, _, _) ⇒
       reports.get(suiteId).foreach { report ⇒
         val scenario = new ScenarioModel()
+        scenario.setClassName(suiteClassName.getOrElse(suiteId))
         scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
         val scenarioCase = new ScenarioCaseModel()
         scenarioCase.setStatus(FAILED)
@@ -92,9 +93,10 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
         report.addScenarioModel(scenario)
       }
       ()
-    case TestSucceeded(_, _, suiteId, _, _, testText, recordedEvents, maybeDuration, _, _, _, _, _, _) ⇒
+    case TestSucceeded(_, _, suiteId, suiteClassName, _, testText, recordedEvents, maybeDuration, _, _, _, _, _, _) ⇒
       reports.get(suiteId).foreach { report ⇒
         val scenario = new ScenarioModel()
+        scenario.setClassName(suiteClassName.getOrElse(suiteId))
         scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
         val scenarioCase = new ScenarioCaseModel
         scenarioCase.setStatus(SUCCESS)

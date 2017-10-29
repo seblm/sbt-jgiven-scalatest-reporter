@@ -3,6 +3,7 @@ package name.lemerdy.sebastian.scalatest.jgiven
 import java.nio.file.{Files, Paths}
 import java.util.Comparator.reverseOrder
 
+import com.tngtech.jgiven.report.model.ExecutionStatus.SUCCESS
 import org.scalatest._
 import org.scalatest.events._
 import org.scalatest.exceptions.TestFailedException
@@ -46,26 +47,34 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
       reporter.reports(suiteId_).getClassName should be(suiteId_)
     }
 
+    scenario("Register a successful test") {
+      Given("JGiven html5 reporter")
+      val reporter = new JGivenHtml5Reporter()
+
+      When(s"reporter receives event test succeeded")
+      applyEvents(reporter, events)
+
+      val successfulScenarios = reporter.reports(suiteId_).getScenariosWithStatus(SUCCESS)
+      Then(s"report identified by key $suiteId_ should have successful scenario")
+      successfulScenarios should have size 1
+      val successfulScenario = successfulScenarios.get(0)
+      And(s"successful scenario class name should be ${suiteClassName.get}")
+      successfulScenario.getClassName should be(suiteClassName.get)
+    }
+
     scenario("Register a failed test") {
       Given("JGiven html5 reporter")
       val reporter = new JGivenHtml5Reporter()
-      val suiteName = "TestOnUsDeposit",
-      val suiteId = "acceptance.sab.cre.onus.recette.TestOnUsDeposit"
-      val suiteClassName = Some(suiteId)
-      val eventsToApply = Seq(
-        SuiteStarting(new Ordinal(0), suiteName, suiteId, suiteClassName, None, None, None, None, "", 0L),
-        TestFailed(new Ordinal(0), "Left(List(CreError(BAS1497,BAS1497 - Le numéro d&#039;opération comptable est incorrect), CreError(BAS1498,BAS1498 - Le numéro d&#039;opération application est incorrect), CreError(BAS1506,BAS1506 - Erreur détectée dans la partie commune du CRE))) did not equal Right(CreResult(true))", ""          , suiteId,                                         None,                                               "",                                                                                                                                        "Scenario: on us deposit api is called on tdr 00005090001 SUNCARD 0,67% at accounting date J-1 return a good CreResult", Vector(), Some(new TestFailedException("Left(List(CreError(BAS1497,BAS1497 - Le numéro d&#039;opération comptable est incorrect), CreError(BAS1498,BAS1498 - Le numéro d&#039;opération application est incorrect), CreError(BAS1506,BAS1506 - Erreur détectée dans la partie commune du CRE))) did not equal Right(CreResult(true))", 0)), Some(354L),         Some(IndentedText("  Scenario: on us deposit api is called on tdr 00005090001 SUNCARD 0,67% at accounting date J-1 return a good CreResult","Scenario: on us deposit api is called on tdr 00005090001 SUNCARD 0,67% at accounting date J-1 return a good CreResult",1)),Some(SeeStackDepthException),Some("acceptance.sab.cre.onus.recette.TestOnUsDeposit"),None,"pool-7-thread-7-ScalaTest-running-TestOnUsDeposit",1508560230677L)
-      )
 
       When(s"reporter receives event test failed")
-      applyEvents(reporter, eventsToApply)
+      applyEvents(reporter, events)
 
-      Then(s"reports contains key $suiteId_")
-      reporter.reports should contain key suiteId_
-      And(s"report identified by key $suiteId_ have name TVSetSpec")
-      reporter.reports(suiteId_).getName should be("TVSetSpec")
-      And(s"report identified by key $suiteId_ have class name $suiteId_")
-      reporter.reports(suiteId_).getClassName should be(suiteId_)
+      val failedScenarios = reporter.reports(suiteId_).getFailedScenarios
+      Then(s"report identified by key $suiteId_ should have failed scenario")
+      failedScenarios should have size 1
+      val failedScenario = failedScenarios.get(0)
+      And(s"failed scenario class name should be ${suiteClassName.get}")
+      failedScenario.getClassName should be(suiteClassName.get)
     }
   }
 
@@ -86,10 +95,11 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
 
   private val suiteId_ = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"
 
+  private val suiteClassName = Some(suiteId_)
+
   private def events: Seq[Event] = {
     val suiteName = "TVSetSpec"
     val className = suiteId_
-    val suiteClassName = Some(suiteId_)
     val fileName = "TVSetSpec.scala"
     val filePathname = Some("Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature.")
     val nameInfo = NameInfo(suiteName, suiteId_, suiteClassName, None)
