@@ -111,16 +111,16 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
     val ordinalInfoProvided4 = ordinalInfoProvided3.next
     val scopeOpened = ordinalInfoProvided4.next
     val testStarting1 = scopeOpened.next
-    val testSucceeded1 = testStarting1.next
-    val infoProvided1 = testSucceeded1.next
+    val infoProvided1 = testStarting1.next
     val infoProvided2 = infoProvided1.next
     val infoProvided3 = infoProvided2.next
-    val testStarting2 = infoProvided3.next
-    val testFailed = testStarting2.next
-    val infoProvided4 = testFailed.next
+    val testSucceeded1 = infoProvided3.next
+    val testStarting2 = testSucceeded1.next
+    val infoProvided4 = testStarting2.next
     val infoProvided5 = infoProvided4.next
     val infoProvided6 = infoProvided5.next
-    val scopeClosed = infoProvided6.next
+    val testFailed = infoProvided6.next
+    val scopeClosed = testFailed.next
     val suiteCompleted = scopeClosed.next
     val runCompleted = suiteCompleted.next
 
