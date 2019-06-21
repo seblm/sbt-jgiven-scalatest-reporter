@@ -1,5 +1,3 @@
-import java.time.Instant.now
-
 import Dependencies._
 
 lazy val root = (project in file("."))
@@ -8,7 +6,7 @@ lazy val root = (project in file("."))
     name := "sbt-jgiven-scalatest-reporter",
     organization := "name.lemerdy.sebastian",
     version := "0.1-SNAPSHOT",
-    scalaVersion := "2.12.3",
+    scalaVersion := "2.12.8",
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
       Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
     },
