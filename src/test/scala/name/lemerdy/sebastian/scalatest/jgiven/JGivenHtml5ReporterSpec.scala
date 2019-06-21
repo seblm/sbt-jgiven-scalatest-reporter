@@ -45,6 +45,8 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
       reporter.reports(suiteId_).getName should be("TVSetSpec")
       And(s"report identified by key $suiteId_ have class name $suiteId_")
       reporter.reports(suiteId_).getClassName should be(suiteId_)
+      And(s"report identified by key $suiteId_ declares tag TVSetFeature")
+      reporter.reports(suiteId_).getTagMap.asScala should contain only ("name.lemerdy.sebastian.scalatest.jgiven.TVSetFeature" -> JGivenHtml5Reporter.newReportTag("name.lemerdy.sebastian.scalatest.jgiven.TVSetFeature", "TVSetFeature"))
     }
 
     scenario("Register a successful test") {
@@ -60,6 +62,8 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
       val successfulScenario = successfulScenarios.get(0)
       And(s"successful scenario class name should be ${suiteClassName.get}")
       successfulScenario.getClassName should be(suiteClassName.get)
+      And(s"successful scenario should be tagged")
+      successfulScenario.getTagIds should contain only "name.lemerdy.sebastian.scalatest.jgiven.TVSetFeature"
     }
 
     scenario("Register a failed test") {
@@ -75,6 +79,8 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
       val failedScenario = failedScenarios.get(0)
       And(s"failed scenario class name should be ${suiteClassName.get}")
       failedScenario.getClassName should be(suiteClassName.get)
+      And(s"successful scenario should be tagged")
+      failedScenario.getTagIds should contain only "name.lemerdy.sebastian.scalatest.jgiven.TVSetFeature"
     }
   }
 

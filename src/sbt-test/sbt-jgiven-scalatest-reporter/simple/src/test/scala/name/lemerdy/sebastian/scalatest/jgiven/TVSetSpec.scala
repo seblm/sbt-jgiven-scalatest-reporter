@@ -2,6 +2,7 @@ package name.lemerdy.sebastian.scalatest.jgiven
 
 import org.scalatest._
 
+@TVSetFeature
 class TVSetSpec extends FeatureSpec with GivenWhenThen {
 
   info("As a TV set owner")

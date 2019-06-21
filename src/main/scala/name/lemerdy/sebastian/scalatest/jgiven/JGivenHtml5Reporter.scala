@@ -1,15 +1,18 @@
 package name.lemerdy.sebastian.scalatest.jgiven
 
+import java.lang.annotation.Annotation
 import java.nio.file.{Files, Paths}
+import java.util
 
 import com.tngtech.jgiven.report.html5.{Html5ReportConfig, Html5ReportGenerator}
 import com.tngtech.jgiven.report.json.ScenarioJsonWriter
 import com.tngtech.jgiven.report.model.ExecutionStatus.{FAILED, SUCCESS}
-import com.tngtech.jgiven.report.model._
 import com.tngtech.jgiven.report.model.StepStatus.{PASSED, FAILED ⇒ STEP_FAILED}
+import com.tngtech.jgiven.report.model._
 import org.scalatest.ResourcefulReporter
 import org.scalatest.events._
 
+import scala.collection.JavaConverters._
 import scala.collection.Map
 import scala.util.Try
 
@@ -44,6 +47,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
       val report = new ReportModel()
       report.setName(suiteName)
       report.setClassName(suiteClassName.getOrElse(suiteId))
+      suiteClassName.map(findTagIds).map(_.asJava).foreach(report.addTags)
       reports = reports + (suiteId -> report)
       ()
     case InfoProvided(_, message, nameInfo, _, _, _, _, _, _) ⇒
@@ -61,6 +65,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
         val scenario = new ScenarioModel()
         scenario.setClassName(suiteClassName.getOrElse(suiteId))
         scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
+        scenario.addTags(new util.ArrayList(report.getTagMap.values()))
         val scenarioCase = new ScenarioCaseModel()
         scenarioCase.setStatus(FAILED)
         maybeDuration.foreach(duration ⇒ scenarioCase.setDurationInNanos(duration * 1000000))
@@ -98,6 +103,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
         val scenario = new ScenarioModel()
         scenario.setClassName(suiteClassName.getOrElse(suiteId))
         scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
+        scenario.addTags(new util.ArrayList(report.getTagMap.values()))
         val scenarioCase = new ScenarioCaseModel
         scenarioCase.setStatus(SUCCESS)
         maybeDuration.foreach(duration ⇒ scenarioCase.setDurationInNanos(duration * 1000000))
@@ -126,5 +132,25 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
     case _ ⇒
       ()
   }}
+
+  def findTagIds(suiteClassName: String): List[Tag] = Try(Class.forName(suiteClassName)).fold(
+    _ ⇒ Nil,
+    _.getAnnotations
+      .map(_.annotationType)
+      .filter(_.getAnnotations.exists(a ⇒ a.annotationType().getName == "org.scalatest.TagAnnotation"))
+      .map(JGivenHtml5Reporter.newReportTag)
+      .toList)
+
+}
+
+object JGivenHtml5Reporter {
+
+  def newReportTag(tag: Class[_ <: Annotation]): Tag = newReportTag(tag.getName, tag.getSimpleName)
+
+  def newReportTag(fullType: String, name: String): Tag = {
+    val reportTag = new Tag(fullType)
+    reportTag.setName(name)
+    reportTag
+  }
 
 }
