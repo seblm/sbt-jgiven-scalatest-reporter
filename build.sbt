@@ -12,9 +12,11 @@ lazy val root = (project in file("."))
         Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
     },
     scriptedBufferLog := false,
+    libraryDependencies += gson,
     libraryDependencies += `jgiven-core`,
     libraryDependencies += `jgiven-html5-report`,
     libraryDependencies += scalatest,
+    libraryDependencies += `slf4j-api`,
   )
 
 bintrayPackageLabels := Seq("sbt", "plugin")

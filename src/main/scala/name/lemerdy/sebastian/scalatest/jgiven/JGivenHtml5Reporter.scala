@@ -18,9 +18,12 @@ import scala.util.Try
 
 class JGivenHtml5Reporter extends ResourcefulReporter {
 
+  private val jsonReporter = new JsonReporter()
+
   private[jgiven] var reports: Map[String, ReportModel] = Map.empty[String, ReportModel]
 
   override def dispose(): Unit = {
+    jsonReporter.dispose()
     val reportsWithScenarios = reports.values.filter(report ⇒ report.getScenarios.size() > 0)
     if (reportsWithScenarios.nonEmpty) {
       val reportsDirectory = Paths.get("target", "jgiven-reports")
@@ -43,7 +46,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
   }
 
   override def apply(event: Event): Unit = {
-    println(event);
+    jsonReporter.apply(event)
     event match {
       case SuiteStarting(_, suiteName, suiteId, suiteClassName, _, _, _, _, _, _) ⇒
         val report = new ReportModel()
