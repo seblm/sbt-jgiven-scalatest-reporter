@@ -14,7 +14,7 @@ Here is what you will get starting from scalatest FeatureSpec basic example:
 
 ### Testing
 
-Run `scripted` for [sbt script tests](http://www.scala-sbt.org/0.13/docs/Testing-sbt-plugins.html).
+Run `scripted` for [sbt script tests](https://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
 
 ### Publishing
 
