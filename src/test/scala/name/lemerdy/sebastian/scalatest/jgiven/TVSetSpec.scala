@@ -5,6 +5,4 @@ package name.lemerdy.sebastian.scalatest.jgiven
   * thus using reflection to load annotations.
   */
 @TVSetFeature
-class TVSetSpec {
-
-}
+class TVSetSpec {}

@@ -7,8 +7,9 @@ lazy val root = (project in file("."))
     organization := "name.lemerdy.sebastian",
     version := "0.1-SNAPSHOT",
     scalaVersion := "2.12.8",
-    scriptedLaunchOpts := { scriptedLaunchOpts.value ++
-      Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+    scriptedLaunchOpts := {
+      scriptedLaunchOpts.value ++
+        Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
     },
     scriptedBufferLog := false,
     libraryDependencies += `jgiven-core`,
@@ -16,7 +17,7 @@ lazy val root = (project in file("."))
     libraryDependencies += scalatest,
   )
 
-bintrayPackageLabels := Seq("sbt","plugin")
+bintrayPackageLabels := Seq("sbt", "plugin")
 bintrayVcsUrl := Some("""git@github.com:seblm/sbt-jgiven-scalatest-reporter.git""")
 
 initialCommands in console := """import name.lemerdy.sebastian.scalatest.jgiven._"""
