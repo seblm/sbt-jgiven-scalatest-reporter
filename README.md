@@ -22,6 +22,5 @@ Run `scripted` for [sbt script tests](https://www.scala-sbt.org/1.x/docs/Testing
 
 ### Backlog
 
- 1. fix: plugin works pretty well with FeatureSpec but description is partial with at least WordSpec
  1. improvement: display test execution time
  1. improvement: migrate to scala 2.13

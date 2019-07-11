@@ -7,10 +7,10 @@ import java.util
 import com.tngtech.jgiven.report.html5.{Html5ReportConfig, Html5ReportGenerator}
 import com.tngtech.jgiven.report.json.ScenarioJsonWriter
 import com.tngtech.jgiven.report.model.ExecutionStatus.{FAILED, SUCCESS}
-import com.tngtech.jgiven.report.model.StepStatus.{PASSED, FAILED ⇒ STEP_FAILED}
+import com.tngtech.jgiven.report.model.StepStatus.{PASSED, FAILED => STEP_FAILED}
 import com.tngtech.jgiven.report.model._
-import org.scalatest.ResourcefulReporter
 import org.scalatest.events._
+import org.scalatest.{FeatureSpecLike, ResourcefulReporter}
 
 import scala.collection.JavaConverters._
 import scala.collection.Map
@@ -21,6 +21,10 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
   private val jsonReporter = new JsonReporter()
 
   private[jgiven] var reports: Map[String, ReportModel] = Map.empty[String, ReportModel]
+
+  private var currentSpecClass: Option[Class[_]] = None
+
+  private var currentSpecInstance: Option[Any] = None
 
   override def dispose(): Unit = {
     jsonReporter.dispose()
@@ -52,7 +56,9 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
         val report = new ReportModel()
         report.setName(suiteName)
         report.setClassName(suiteClassName.getOrElse(suiteId))
-        suiteClassName.map(findTagIds).map(_.asJava).foreach(report.addTags)
+        currentSpecClass = suiteClassName.flatMap(loadSuiteClass)
+        currentSpecInstance = currentSpecClass.flatMap(instantiateSuiteClass)
+        currentSpecClass.map(findTagIds).map(_.asJava).foreach(report.addTags)
         reports = reports + (suiteId -> report)
         ()
       case InfoProvided(_, message, nameInfo, _, _, _, _, _, _) ⇒
@@ -73,7 +79,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
                       _,
                       suiteId,
                       suiteClassName,
-                      _,
+                      testName,
                       testText,
                       recordedEvents,
                       maybeThrowable,
@@ -87,7 +93,11 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
         reports.get(suiteId).foreach { report ⇒
           val scenario = new ScenarioModel()
           scenario.setClassName(suiteClassName.getOrElse(suiteId))
-          scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
+          scenario.setDescription(currentSpecInstance match {
+            case Some(currentSpec) if currentSpec.isInstanceOf[FeatureSpecLike] =>
+              testText.replaceFirst("^Scenario: ", "")
+            case _ => testName
+          })
           scenario.addTags(new util.ArrayList(report.getTagMap.values()))
           val scenarioCase = new ScenarioCaseModel()
           scenarioCase.setStatus(FAILED)
@@ -121,11 +131,15 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
           report.addScenarioModel(scenario)
         }
         ()
-      case TestSucceeded(_, _, suiteId, suiteClassName, _, testText, recordedEvents, maybeDuration, _, _, _, _, _, _) ⇒
+      case TestSucceeded(_, _, suiteId, suiteClassName, testName, testText, recordedEvents, maybeDuration, _, _, _, _, _, _) ⇒
         reports.get(suiteId).foreach { report ⇒
           val scenario = new ScenarioModel()
           scenario.setClassName(suiteClassName.getOrElse(suiteId))
-          scenario.setDescription(testText.replaceFirst("^Scenario: ", ""))
+          scenario.setDescription(currentSpecInstance match {
+            case Some(currentSpec) if currentSpec.isInstanceOf[FeatureSpecLike] =>
+              testText.replaceFirst("^Scenario: ", "")
+            case _ => testName
+          })
           scenario.addTags(new util.ArrayList(report.getTagMap.values()))
           val scenarioCase = new ScenarioCaseModel
           scenarioCase.setStatus(SUCCESS)
@@ -154,20 +168,24 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
           report.addScenarioModel(scenario)
         }
         ()
+      case _: SuiteCompleted =>
+        currentSpecClass = None
+        currentSpecInstance = None
       case _ ⇒
         ()
     }
   }
 
-  def findTagIds(suiteClassName: String): List[Tag] =
-    Try(Class.forName(suiteClassName)).fold(
-      _ ⇒ Nil,
-      _.getAnnotations
-        .map(_.annotationType)
-        .filter(_.getAnnotations.exists(a ⇒ a.annotationType().getName == "org.scalatest.TagAnnotation"))
-        .map(JGivenHtml5Reporter.newReportTag)
-        .toList
-    )
+  def findTagIds(currentSpec: Class[_]): List[Tag] =
+    currentSpec.getAnnotations
+      .map(_.annotationType)
+      .filter(_.getAnnotations.exists(a ⇒ a.annotationType().getName == "org.scalatest.TagAnnotation"))
+      .map(JGivenHtml5Reporter.newReportTag)
+      .toList
+
+  private def loadSuiteClass(suiteClassName: String): Option[Class[_]] = Try(Class.forName(suiteClassName)).toOption
+
+  private def instantiateSuiteClass(suiteClass: Class[_]): Option[Any] = Try(suiteClass.newInstance()).toOption
 
 }
 
