@@ -29,13 +29,13 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
 
   override def dispose(): Unit = {
     jsonReporter.dispose()
-    val reportsWithScenarios = reports.values.filter(report ⇒ report.getScenarios.size() > 0)
+    val reportsWithScenarios = reports.values.filter(report => report.getScenarios.size() > 0)
     if (reportsWithScenarios.nonEmpty) {
       val reportsDirectory = Paths.get("target", "jgiven-reports")
 
       val jsonReportsDirectory = reportsDirectory.resolve("json")
       Files.createDirectories(jsonReportsDirectory)
-      reportsWithScenarios.foreach { report ⇒
+      reportsWithScenarios.foreach { report =>
         val reportFile = jsonReportsDirectory.resolve(s"${report.getClassName}.json")
         new ScenarioJsonWriter(report).write(reportFile.toFile)
       }
@@ -53,7 +53,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
   override def apply(event: Event): Unit = {
     jsonReporter.apply(event)
     event match {
-      case SuiteStarting(_, suiteName, suiteId, suiteClassName, _, _, _, _, _, _) ⇒
+      case SuiteStarting(_, suiteName, suiteId, suiteClassName, _, _, _, _, _, _) =>
         val report = new ReportModel()
         report.setName(suiteName)
         report.setClassName(suiteClassName.getOrElse(suiteId))
@@ -62,15 +62,15 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
         currentSpecClass.map(findTagIds).map(_.asJava).foreach(report.addTags)
         reports = reports + (suiteId -> report)
         ()
-      case InfoProvided(_, message, nameInfo, _, _, _, _, _, _) ⇒
+      case InfoProvided(_, message, nameInfo, _, _, _, _, _, _) =>
         nameInfo
           .map(_.suiteId)
-          .flatMap(suiteId ⇒ reports.get(suiteId).map((suiteId, _)))
+          .flatMap(suiteId => reports.get(suiteId).map((suiteId, _)))
           .foreach {
-            case (suiteId: String, report: ReportModel) ⇒
+            case (suiteId: String, report: ReportModel) =>
               report.setDescription(
                 Option(report.getDescription)
-                  .map(previousDescription ⇒ s"$previousDescription</br>$message")
+                  .map(previousDescription => s"$previousDescription</br>$message")
                   .getOrElse(message))
               reports = reports + (suiteId -> report)
           }
@@ -90,8 +90,8 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
                       _,
                       _,
                       _,
-                      _) ⇒
-        reports.get(suiteId).foreach { report ⇒
+                      _) =>
+        reports.get(suiteId).foreach { report =>
           val scenario = new ScenarioModel()
           scenario.setClassName(suiteClassName.getOrElse(suiteId))
           scenario.setDescription(currentSpecInstance match {
@@ -100,35 +100,36 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
             case _ => testName
           })
           scenario.addTags(new util.ArrayList(report.getTagMap.values()))
-          maybeDuration.foreach(duration ⇒ scenario.setDurationInNanos(duration.milliseconds.toNanos))
+          maybeDuration.foreach(duration => scenario.setDurationInNanos(duration.milliseconds.toNanos))
           val scenarioCase = new ScenarioCaseModel()
           scenarioCase.setStatus(FAILED)
           scenario.addCase(scenarioCase)
           recordedEvents.foreach {
-            case InfoProvided(_, message, _, _, _, _, _, _, _) ⇒
+            case InfoProvided(_, message, _, _, _, _, _, _, _) =>
               val step = new StepModel()
               step.setName(message)
               val (maybeIntroWord, word): (Option[String], String) = message.substring(0, 5) match {
-                case "Given" ⇒ (Some("Given"), message.replaceFirst("^Given ", ""))
-                case "When " ⇒ (Some("When"), message.replaceFirst("^When ", ""))
-                case "Then " ⇒ (Some("Then"), message.replaceFirst("^Then ", ""))
-                case _ ⇒ (None, message)
+                case "Given" => (Some("Given"), message.replaceFirst("^Given ", ""))
+                case "When " => (Some("When"), message.replaceFirst("^When ", ""))
+                case "Then " => (Some("Then"), message.replaceFirst("^Then ", ""))
+                case _       => (None, message)
               }
-              maybeIntroWord.foreach(introWord ⇒ step.addIntroWord(new Word(introWord, true)))
+              maybeIntroWord.foreach(introWord => step.addIntroWord(new Word(introWord, true)))
               step.addWords(new Word(word))
               step.setStatus(PASSED)
               scenarioCase.addStep(step)
               ()
-            case _: MarkupProvided ⇒
+            case _: MarkupProvided =>
               ()
           }
-          maybeThrowable.foreach { throwable ⇒
+          maybeThrowable.foreach { throwable =>
             val throwableStepModel = new StepModel()
             throwableStepModel.setName(throwable.toString)
             throwableStepModel.addWords(new Word(throwable.toString))
             scenarioCase.addStep(throwableStepModel)
           }
-          Try(scenarioCase.getSteps.get(scenarioCase.getSteps.size - 1)).map(lastStep ⇒ lastStep.setStatus(STEP_FAILED))
+          Try(scenarioCase.getSteps.get(scenarioCase.getSteps.size - 1)).map(lastStep =>
+            lastStep.setStatus(STEP_FAILED))
           report.addScenarioModel(scenario)
         }
         ()
@@ -145,8 +146,8 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
                          _,
                          _,
                          _,
-                         _) ⇒
-        reports.get(suiteId).foreach { report ⇒
+                         _) =>
+        reports.get(suiteId).foreach { report =>
           val scenario = new ScenarioModel()
           scenario.setClassName(suiteClassName.getOrElse(suiteId))
           scenario.setDescription(currentSpecInstance match {
@@ -155,27 +156,27 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
             case _ => testName
           })
           scenario.addTags(new util.ArrayList(report.getTagMap.values()))
-          maybeDuration.foreach(duration ⇒ scenario.setDurationInNanos(duration.milliseconds.toNanos))
+          maybeDuration.foreach(duration => scenario.setDurationInNanos(duration.milliseconds.toNanos))
           val scenarioCase = new ScenarioCaseModel
           scenarioCase.setStatus(SUCCESS)
           recordedEvents.foreach {
-            case InfoProvided(_, message, _, _, _, _, _, _, _) ⇒
+            case InfoProvided(_, message, _, _, _, _, _, _, _) =>
               val step = new StepModel()
               step.setName(message)
               val (maybeIntroWord, word): (Option[String], String) = message.substring(0, 5) match {
-                case "Given" ⇒ (Some("Given"), message.replaceFirst("^Given ", ""))
-                case "When " ⇒ (Some("When"), message.replaceFirst("^When ", ""))
-                case "Then " ⇒ (Some("Then"), message.replaceFirst("^Then ", ""))
-                case _ ⇒ (None, message)
+                case "Given" => (Some("Given"), message.replaceFirst("^Given ", ""))
+                case "When " => (Some("When"), message.replaceFirst("^When ", ""))
+                case "Then " => (Some("Then"), message.replaceFirst("^Then ", ""))
+                case _       => (None, message)
               }
-              maybeIntroWord.foreach { introWord ⇒
+              maybeIntroWord.foreach { introWord =>
                 step.addIntroWord(new Word(introWord, true))
               }
               step.addWords(new Word(word))
               step.setStatus(PASSED)
               scenarioCase.addStep(step)
               ()
-            case _: MarkupProvided ⇒
+            case _: MarkupProvided =>
               ()
           }
           scenario.addCase(scenarioCase)
@@ -185,7 +186,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
       case _: SuiteCompleted =>
         currentSpecClass = None
         currentSpecInstance = None
-      case _ ⇒
+      case _ =>
         ()
     }
   }
@@ -193,7 +194,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
   def findTagIds(currentSpec: Class[_]): List[Tag] =
     currentSpec.getAnnotations
       .map(_.annotationType)
-      .filter(_.getAnnotations.exists(a ⇒ a.annotationType().getName == "org.scalatest.TagAnnotation"))
+      .filter(_.getAnnotations.exists(a => a.annotationType().getName == "org.scalatest.TagAnnotation"))
       .map(JGivenHtml5Reporter.newReportTag)
       .toList
 
