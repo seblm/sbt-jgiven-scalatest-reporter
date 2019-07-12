@@ -14,6 +14,7 @@ import org.scalatest.{FeatureSpecLike, ResourcefulReporter}
 
 import scala.collection.JavaConverters._
 import scala.collection.Map
+import scala.concurrent.duration._
 import scala.util.Try
 
 class JGivenHtml5Reporter extends ResourcefulReporter {
@@ -99,9 +100,9 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
             case _ => testName
           })
           scenario.addTags(new util.ArrayList(report.getTagMap.values()))
+          maybeDuration.foreach(duration ⇒ scenario.setDurationInNanos(duration.milliseconds.toNanos))
           val scenarioCase = new ScenarioCaseModel()
           scenarioCase.setStatus(FAILED)
-          maybeDuration.foreach(duration ⇒ scenarioCase.setDurationInNanos(duration * 1000000))
           scenario.addCase(scenarioCase)
           recordedEvents.foreach {
             case InfoProvided(_, message, _, _, _, _, _, _, _) ⇒
@@ -131,7 +132,20 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
           report.addScenarioModel(scenario)
         }
         ()
-      case TestSucceeded(_, _, suiteId, suiteClassName, testName, testText, recordedEvents, maybeDuration, _, _, _, _, _, _) ⇒
+      case TestSucceeded(_,
+                         _,
+                         suiteId,
+                         suiteClassName,
+                         testName,
+                         testText,
+                         recordedEvents,
+                         maybeDuration,
+                         _,
+                         _,
+                         _,
+                         _,
+                         _,
+                         _) ⇒
         reports.get(suiteId).foreach { report ⇒
           val scenario = new ScenarioModel()
           scenario.setClassName(suiteClassName.getOrElse(suiteId))
@@ -141,9 +155,9 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
             case _ => testName
           })
           scenario.addTags(new util.ArrayList(report.getTagMap.values()))
+          maybeDuration.foreach(duration ⇒ scenario.setDurationInNanos(duration.milliseconds.toNanos))
           val scenarioCase = new ScenarioCaseModel
           scenarioCase.setStatus(SUCCESS)
-          maybeDuration.foreach(duration ⇒ scenarioCase.setDurationInNanos(duration * 1000000))
           recordedEvents.foreach {
             case InfoProvided(_, message, _, _, _, _, _, _, _) ⇒
               val step = new StepModel()

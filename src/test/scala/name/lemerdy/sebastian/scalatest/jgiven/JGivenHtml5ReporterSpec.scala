@@ -8,6 +8,7 @@ import org.scalatest.OptionValues._
 import org.scalatest._
 
 import scala.collection.JavaConverters._
+import scala.concurrent.duration._
 
 class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matchers with BeforeAndAfter {
 
@@ -57,8 +58,10 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
       val successfulScenario = successfulScenarios.get(0)
       And(s"successful scenario class name should be ${suiteClassName.value}")
       successfulScenario.getClassName should be(suiteClassName.value)
-      And(s"successful scenario should be tagged")
+      And("successful scenario should be tagged")
       successfulScenario.getTagIds should contain only "name.lemerdy.sebastian.scalatest.jgiven.TVSetFeature"
+      And("successful scenario should report duration")
+      successfulScenario.getDurationInNanos should be(29.milliseconds.toNanos)
     }
 
     scenario("Register a failed test") {
@@ -72,8 +75,10 @@ class JGivenHtml5ReporterSpec extends FeatureSpec with GivenWhenThen with Matche
       val failedScenario = failedScenarios.get(0)
       And(s"failed scenario class name should be ${suiteClassName.value}")
       failedScenario.getClassName should be(suiteClassName.value)
-      And(s"successful scenario should be tagged")
+      And("failed scenario should be tagged")
       failedScenario.getTagIds should contain only "name.lemerdy.sebastian.scalatest.jgiven.TVSetFeature"
+      And("failed scenario should report duration")
+      failedScenario.getDurationInNanos should be(20.milliseconds.toNanos)
     }
   }
 
