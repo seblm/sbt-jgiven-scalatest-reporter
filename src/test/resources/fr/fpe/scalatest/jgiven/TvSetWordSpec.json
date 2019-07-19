@@ -1,0 +1,559 @@
+[
+  {
+    "type": "RunStarting",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        0
+      ]
+    },
+    "threadName": "ScalaTest-run",
+    "timeStamp": 1562818641426,
+    "testCount": 2,
+    "configMap": {
+      "underlying": {}
+    }
+  },
+  {
+    "type": "SuiteStarting",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        1
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "TVSetWordSpec:",
+      "rawText": "TVSetWordSpec",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "TopOfClass",
+      "className": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+    },
+    "threadName": "ScalaTest-run",
+    "timeStamp": 1562818641442,
+    "suiteName": "TVSetWordSpec",
+    "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "rerunner": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+  },
+  {
+    "type": "InfoProvided",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        2
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "+ As a TV set owner",
+      "rawText": "As a TV set owner",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 8,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641471,
+    "message": "As a TV set owner",
+    "nameInfo": {
+      "suiteName": "TVSetWordSpec",
+      "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+      "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+    }
+  },
+  {
+    "type": "InfoProvided",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        3
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "+ I want to be able to turn the TV on and off",
+      "rawText": "I want to be able to turn the TV on and off",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 9,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641471,
+    "message": "I want to be able to turn the TV on and off",
+    "nameInfo": {
+      "suiteName": "TVSetWordSpec",
+      "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+      "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+    }
+  },
+  {
+    "type": "InfoProvided",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        4
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "+ So I can watch TV when I want",
+      "rawText": "So I can watch TV when I want",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 10,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641471,
+    "message": "So I can watch TV when I want",
+    "nameInfo": {
+      "suiteName": "TVSetWordSpec",
+      "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+      "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+    }
+  },
+  {
+    "type": "InfoProvided",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        5
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "+ And save energy when I\u0027m not watching TV",
+      "rawText": "And save energy when I\u0027m not watching TV",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 11,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641472,
+    "message": "And save energy when I\u0027m not watching TV",
+    "nameInfo": {
+      "suiteName": "TVSetWordSpec",
+      "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+      "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+    }
+  },
+  {
+    "type": "ScopeOpened",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        6
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "User presses power button",
+      "rawText": "User presses power button",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 13,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641473,
+    "message": "User presses power button",
+    "nameInfo": {
+      "suiteName": "TVSetWordSpec",
+      "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+      "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+    }
+  },
+  {
+    "type": "TestStarting",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        7
+      ]
+    },
+    "formatter": {
+      "type": "MotionToSuppress$"
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 14,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641480,
+    "suiteName": "TVSetWordSpec",
+    "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "testName": "User presses power button when TV is off",
+    "testText": "TV is off",
+    "rerunner": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+  },
+  {
+    "type": "TestSucceeded",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        11
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "- when TV is off",
+      "rawText": "when TV is off",
+      "indentationLevel": 1
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 14,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641512,
+    "suiteName": "TVSetWordSpec",
+    "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "testName": "User presses power button when TV is off",
+    "testText": "TV is off",
+    "recordedEvents": [
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            8
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "  + Given a TV set that is switched off",
+          "rawText": "Given a TV set that is switched off",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 15,
+          "fileName": "TVSetWordSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetWordSpec",
+        "timeStamp": 1562818641509,
+        "message": "Given a TV set that is switched off",
+        "nameInfo": {
+          "suiteName": "TVSetWordSpec",
+          "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "testName": "User presses power button when TV is off"
+        }
+      },
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            9
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "  + When the power button is pressed",
+          "rawText": "When the power button is pressed",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 19,
+          "fileName": "TVSetWordSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetWordSpec",
+        "timeStamp": 1562818641509,
+        "message": "When the power button is pressed",
+        "nameInfo": {
+          "suiteName": "TVSetWordSpec",
+          "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "testName": "User presses power button when TV is off"
+        }
+      },
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            10
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "  + Then the TV should switch on",
+          "rawText": "Then the TV should switch on",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 22,
+          "fileName": "TVSetWordSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetWordSpec",
+        "timeStamp": 1562818641509,
+        "message": "Then the TV should switch on",
+        "nameInfo": {
+          "suiteName": "TVSetWordSpec",
+          "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "testName": "User presses power button when TV is off"
+        }
+      }
+    ],
+    "duration": 29,
+    "rerunner": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+  },
+  {
+    "type": "TestStarting",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        12
+      ]
+    },
+    "formatter": {
+      "type": "MotionToSuppress$"
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 26,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641513,
+    "suiteName": "TVSetWordSpec",
+    "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "testName": "User presses power button when TV is on",
+    "testText": "TV is on",
+    "rerunner": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+  },
+  {
+    "type": "TestFailed",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        16
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "- when TV is on",
+      "rawText": "when TV is on",
+      "indentationLevel": 1
+    },
+    "location": {
+      "type": "SeeStackDepthException$"
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641538,
+    "message": "tv.isOn was false",
+    "suiteName": "TVSetWordSpec",
+    "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "testName": "User presses power button when TV is on",
+    "testText": "TV is on",
+    "recordedEvents": [
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            13
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "  + Given a TV set that is switched on",
+          "rawText": "Given a TV set that is switched on",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 27,
+          "fileName": "TVSetWordSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetWordSpec",
+        "timeStamp": 1562818641534,
+        "message": "Given a TV set that is switched on",
+        "nameInfo": {
+          "suiteName": "TVSetWordSpec",
+          "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "testName": "User presses power button when TV is on"
+        }
+      },
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            14
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "  + When the power button is pressed",
+          "rawText": "When the power button is pressed",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 32,
+          "fileName": "TVSetWordSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetWordSpec",
+        "timeStamp": 1562818641535,
+        "message": "When the power button is pressed",
+        "nameInfo": {
+          "suiteName": "TVSetWordSpec",
+          "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "testName": "User presses power button when TV is on"
+        }
+      },
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            15
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "  + Then the TV should switch off",
+          "rawText": "Then the TV should switch off",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 35,
+          "fileName": "TVSetWordSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetWordSpec",
+        "timeStamp": 1562818641535,
+        "message": "Then the TV should switch off",
+        "nameInfo": {
+          "suiteName": "TVSetWordSpec",
+          "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+          "testName": "User presses power button when TV is on"
+        }
+      }
+    ],
+    "throwable": {
+      "detailMessage": "org.scalatest.exceptions.TestFailedException: tv.isOn was false",
+      "stackTrace": [],
+      "suppressedExceptions": []
+    },
+    "duration": 21,
+    "rerunner": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+  },
+  {
+    "type": "ScopeClosed",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        17
+      ]
+    },
+    "formatter": {
+      "type": "MotionToSuppress$"
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 13,
+      "fileName": "TVSetWordSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetWordSpec",
+    "timeStamp": 1562818641541,
+    "message": "User presses power button",
+    "nameInfo": {
+      "suiteName": "TVSetWordSpec",
+      "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+      "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+    }
+  },
+  {
+    "type": "SuiteCompleted",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        18
+      ]
+    },
+    "formatter": {
+      "type": "MotionToSuppress$"
+    },
+    "location": {
+      "type": "TopOfClass",
+      "className": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+    },
+    "threadName": "ScalaTest-run",
+    "timeStamp": 1562818641565,
+    "suiteName": "TVSetWordSpec",
+    "suiteId": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "suiteClassName": "fr.fpe.scalatest.jgiven.TVSetWordSpec",
+    "duration": 112,
+    "rerunner": "fr.fpe.scalatest.jgiven.TVSetWordSpec"
+  },
+  {
+    "type": "RunCompleted",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        19
+      ]
+    },
+    "threadName": "ScalaTest-run",
+    "timeStamp": 1562818641568,
+    "duration": 317,
+    "summary": {
+      "testsSucceededCount": 1,
+      "testsFailedCount": 1,
+      "testsIgnoredCount": 0,
+      "testsPendingCount": 0,
+      "testsCanceledCount": 0,
+      "suitesCompletedCount": 1,
+      "suitesAbortedCount": 0,
+      "scopesPendingCount": 0,
+      "testsCompletedCount": 2,
+      "totalTestsCount": 2
+    }
+  }
+]

@@ -4,7 +4,7 @@ lazy val root = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(
     name := "sbt-jgiven-scalatest-reporter",
-    organization := "name.lemerdy.sebastian",
+    organization := "fr.fpe",
     version := "0.1-SNAPSHOT",
     scalaVersion := "2.12.8",
     scriptedLaunchOpts := {
@@ -19,7 +19,4 @@ lazy val root = (project in file("."))
     libraryDependencies += `slf4j-api`,
   )
 
-bintrayPackageLabels := Seq("sbt", "plugin")
-bintrayVcsUrl := Some("""git@github.com:seblm/sbt-jgiven-scalatest-reporter.git""")
-
-initialCommands in console := """import name.lemerdy.sebastian.scalatest.jgiven._"""
+initialCommands in console := """import fr.fpe.scalatest.jgiven._"""
