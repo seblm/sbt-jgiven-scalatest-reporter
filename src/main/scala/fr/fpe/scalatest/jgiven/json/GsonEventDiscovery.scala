@@ -11,8 +11,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonEventDiscovery {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class DiscoveryCompletedSerializer() extends JsonSerializer[DiscoveryCompleted] {
 
@@ -27,16 +26,17 @@ object GsonEventDiscovery {
 
   }
 
-  /**
-    * Needed because duration, formatter, location and payload are optionals but yields to null if non present
+  /** Needed because duration, formatter, location and payload are optionals but yields to null if non present
     */
   class DiscoveryCompletedDeserializer() extends JsonDeserializer[DiscoveryCompleted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
-    override def deserialize(json: JsonElement,
-                             typeOfT: Type,
-                             context: JsonDeserializationContext): DiscoveryCompleted = {
+    override def deserialize(
+        json: JsonElement,
+        typeOfT: Type,
+        context: JsonDeserializationContext
+    ): DiscoveryCompleted = {
       logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
       val jsonObject = json.getAsJsonObject
       DiscoveryCompleted(

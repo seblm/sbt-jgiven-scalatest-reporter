@@ -11,8 +11,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonEventNoteProvided {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class NoteProvidedSerializer() extends JsonSerializer[NoteProvided] {
 
@@ -29,8 +28,7 @@ object GsonEventNoteProvided {
 
   }
 
-  /**
-    * Needed because nameInfo, throwable, formatter, location and payload are optionals but yields to null if non
+  /** Needed because nameInfo, throwable, formatter, location and payload are optionals but yields to null if non
     * present
     */
   class NoteProvidedDeserializer() extends JsonDeserializer[NoteProvided] {

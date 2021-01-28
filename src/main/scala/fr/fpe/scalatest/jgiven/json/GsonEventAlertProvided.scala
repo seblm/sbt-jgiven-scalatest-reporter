@@ -11,8 +11,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonEventAlertProvided {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class AlertProvidedSerializer() extends JsonSerializer[AlertProvided] {
 
@@ -29,8 +28,7 @@ object GsonEventAlertProvided {
 
   }
 
-  /**
-    * Needed because nameInfo, throwable, formatter, location and payload are optionals but yields to null if non
+  /** Needed because nameInfo, throwable, formatter, location and payload are optionals but yields to null if non
     * present
     */
   class AlertProvidedDeserializer() extends JsonDeserializer[AlertProvided] {

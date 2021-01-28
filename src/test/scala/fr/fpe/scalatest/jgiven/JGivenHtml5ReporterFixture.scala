@@ -27,7 +27,8 @@ object JGivenHtml5ReporterFixture {
     GsonEventSupport.gson
       .fromJson[util.Collection[Event]](
         Source.fromResource(s"fr/fpe/scalatest/jgiven/$fileName").bufferedReader(),
-        GsonEventSupport.collectionOfEventsType)
+        GsonEventSupport.collectionOfEventsType
+      )
       .asScala
       .toList
 

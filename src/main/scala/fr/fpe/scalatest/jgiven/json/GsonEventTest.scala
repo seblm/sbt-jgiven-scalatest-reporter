@@ -13,8 +13,7 @@ import scala.collection.immutable.IndexedSeq
 
 object GsonEventTest {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class TestCanceledSerializer() extends JsonSerializer[TestCanceled] {
 
@@ -29,8 +28,10 @@ object GsonEventTest {
       src.suiteClassName.foreach(suiteClassName => testCanceled.addProperty("suiteClassName", suiteClassName))
       testCanceled.addProperty("testName", src.testName)
       testCanceled.addProperty("testText", src.testText)
-      testCanceled.add("recordedEvents",
-                       context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType))
+      testCanceled.add(
+        "recordedEvents",
+        context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType)
+      )
       src.throwable.foreach(throwable => testCanceled.add("throwable", context.serialize(throwable)))
       src.duration.foreach(duration => testCanceled.addProperty("duration", duration))
       src.rerunner.foreach(rerunner => testCanceled.addProperty("rerunner", rerunner))
@@ -39,8 +40,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because suiteClassName, throwable, duration, formatter, location, rerunner and payload are optionals but
+  /** Needed because suiteClassName, throwable, duration, formatter, location, rerunner and payload are optionals but
     * yields to null if non present
     */
   class TestCanceledDeserializer() extends JsonDeserializer[TestCanceled] {
@@ -58,8 +58,8 @@ object GsonEventTest {
         suiteClassName = Option(jsonObject.get("suiteClassName")).map(_.getAsString),
         testName = jsonObject.get("testName").getAsString,
         testText = jsonObject.get("testText").getAsString,
-        recordedEvents = context.deserialize(jsonObject.get("recordedEvents"),
-                                             new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
+        recordedEvents = context
+          .deserialize(jsonObject.get("recordedEvents"), new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
         throwable = Option(context.deserialize(jsonObject.get("throwable"), new TypeToken[Throwable]() {}.getType)),
         duration = Option(jsonObject.get("duration")).map(_.getAsLong),
         formatter = Option(context.deserialize(jsonObject.get("formatter"), new TypeToken[Formatter]() {}.getType)),
@@ -73,8 +73,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class TestFailedSerializer() extends JsonSerializer[TestFailed] {
 
@@ -89,10 +88,13 @@ object GsonEventTest {
       src.suiteClassName.foreach(suiteClassName => testFailed.addProperty("suiteClassName", suiteClassName))
       testFailed.addProperty("testName", src.testName)
       testFailed.addProperty("testText", src.testText)
-      testFailed.add("recordedEvents",
-                     context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType))
+      testFailed.add(
+        "recordedEvents",
+        context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType)
+      )
       src.throwable.foreach(throwable =>
-        testFailed.add("throwable", context.serialize(throwable, new TypeToken[Throwable]() {}.getType)))
+        testFailed.add("throwable", context.serialize(throwable, new TypeToken[Throwable]() {}.getType))
+      )
       src.duration.foreach(duration => testFailed.addProperty("duration", duration))
       src.rerunner.foreach(rerunner => testFailed.addProperty("rerunner", rerunner))
       testFailed
@@ -100,8 +102,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because suiteClassName, throwable, duration, formatter, location, rerunner and payload are optionals but
+  /** Needed because suiteClassName, throwable, duration, formatter, location, rerunner and payload are optionals but
     * yields to null if non present
     */
   class TestFailedDeserializer() extends JsonDeserializer[TestFailed] {
@@ -119,8 +120,8 @@ object GsonEventTest {
         suiteClassName = Option(jsonObject.get("suiteClassName")).map(_.getAsString),
         testName = jsonObject.get("testName").getAsString,
         testText = jsonObject.get("testText").getAsString,
-        recordedEvents = context.deserialize(jsonObject.get("recordedEvents"),
-                                             new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
+        recordedEvents = context
+          .deserialize(jsonObject.get("recordedEvents"), new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
         throwable = Option(context.deserialize(jsonObject.get("throwable"), new TypeToken[Throwable]() {}.getType)),
         duration = Option(jsonObject.get("duration")).map(_.getAsLong),
         formatter = Option(context.deserialize(jsonObject.get("formatter"), new TypeToken[Formatter]() {}.getType)),
@@ -134,8 +135,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class TestIgnoredSerializer() extends JsonSerializer[TestIgnored] {
 
@@ -154,8 +154,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because suiteClassName, formatter, location and payload are optionals but yields to null if non present
+  /** Needed because suiteClassName, formatter, location and payload are optionals but yields to null if non present
     */
   class TestIgnoredDeserializer() extends JsonDeserializer[TestIgnored] {
 
@@ -181,8 +180,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class TestPendingSerializer() extends JsonSerializer[TestPending] {
 
@@ -196,16 +194,17 @@ object GsonEventTest {
       src.suiteClassName.foreach(suiteClassName => testPending.addProperty("suiteClassName", suiteClassName))
       testPending.addProperty("testName", src.testName)
       testPending.addProperty("testText", src.testText)
-      testPending.add("recordedEvents",
-                      context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType))
+      testPending.add(
+        "recordedEvents",
+        context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType)
+      )
       src.duration.foreach(duration => testPending.addProperty("duration", duration))
       testPending
     }
 
   }
 
-  /**
-    * Needed because suiteClassName, duration, formatter, location and payload are optionals but yields to null if non
+  /** Needed because suiteClassName, duration, formatter, location and payload are optionals but yields to null if non
     * present
     */
   class TestPendingDeserializer() extends JsonDeserializer[TestPending] {
@@ -222,8 +221,8 @@ object GsonEventTest {
         suiteClassName = Option(jsonObject.get("suiteClassName")).map(_.getAsString),
         testName = jsonObject.get("testName").getAsString,
         testText = jsonObject.get("testText").getAsString,
-        recordedEvents = context.deserialize(jsonObject.get("recordedEvents"),
-                                             new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
+        recordedEvents = context
+          .deserialize(jsonObject.get("recordedEvents"), new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
         duration = Option(jsonObject.get("duration")).map(_.getAsLong),
         formatter = Option(context.deserialize(jsonObject.get("formatter"), new TypeToken[Formatter]() {}.getType)),
         location = Option(context.deserialize(jsonObject.get("location"), new TypeToken[Location]() {}.getType)),
@@ -235,8 +234,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class TestStartingSerializer() extends JsonSerializer[TestStarting] {
 
@@ -256,8 +254,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because suiteClassName, formatter, location, rerunner and payload are optionals but yields to null if non
+  /** Needed because suiteClassName, formatter, location, rerunner and payload are optionals but yields to null if non
     * present
     */
   class TestStartingDeserializer() extends JsonDeserializer[TestStarting] {
@@ -285,8 +282,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class TestSucceededSerializer() extends JsonSerializer[TestSucceeded] {
 
@@ -300,8 +296,10 @@ object GsonEventTest {
       src.suiteClassName.foreach(suiteClassName => testSucceeded.addProperty("suiteClassName", suiteClassName))
       testSucceeded.addProperty("testName", src.testName)
       testSucceeded.addProperty("testText", src.testText)
-      testSucceeded.add("recordedEvents",
-                        context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType))
+      testSucceeded.add(
+        "recordedEvents",
+        context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType)
+      )
       src.duration.foreach(duration => testSucceeded.addProperty("duration", duration))
       src.rerunner.foreach(rerunner => testSucceeded.addProperty("rerunner", rerunner))
       testSucceeded
@@ -309,8 +307,7 @@ object GsonEventTest {
 
   }
 
-  /**
-    * Needed because suiteClassName, duration, formatter, location, rerunner and payload are optionals but yields to
+  /** Needed because suiteClassName, duration, formatter, location, rerunner and payload are optionals but yields to
     * null if non present
     */
   class TestSucceededDeserializer() extends JsonDeserializer[TestSucceeded] {
@@ -327,8 +324,8 @@ object GsonEventTest {
         suiteClassName = Option(jsonObject.get("suiteClassName")).map(_.getAsString),
         testName = jsonObject.get("testName").getAsString,
         testText = jsonObject.get("testText").getAsString,
-        recordedEvents = context.deserialize(jsonObject.get("recordedEvents"),
-                                             new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
+        recordedEvents = context
+          .deserialize(jsonObject.get("recordedEvents"), new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
         duration = Option(jsonObject.get("duration")).map(_.getAsLong),
         formatter = Option(context.deserialize(jsonObject.get("formatter"), new TypeToken[Formatter]() {}.getType)),
         location = Option(context.deserialize(jsonObject.get("location"), new TypeToken[Location]() {}.getType)),

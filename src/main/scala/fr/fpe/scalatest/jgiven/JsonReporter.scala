@@ -9,8 +9,7 @@ import org.scalatest.events._
 
 import scala.collection.mutable.ListBuffer
 
-/**
-  * Save every ScalaTest reported event to json file
+/** Save every ScalaTest reported event to json file
   */
 class JsonReporter extends ResourcefulReporter {
 

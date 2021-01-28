@@ -66,31 +66,33 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
         nameInfo
           .map(_.suiteId)
           .flatMap(suiteId => reports.get(suiteId).map((suiteId, _)))
-          .foreach {
-            case (suiteId: String, report: ReportModel) =>
-              report.setDescription(
-                Option(report.getDescription)
-                  .map(previousDescription => s"$previousDescription</br>$message")
-                  .getOrElse(message))
-              reports = reports + (suiteId -> report)
+          .foreach { case (suiteId: String, report: ReportModel) =>
+            report.setDescription(
+              Option(report.getDescription)
+                .map(previousDescription => s"$previousDescription</br>$message")
+                .getOrElse(message)
+            )
+            reports = reports + (suiteId -> report)
           }
         ()
-      case TestFailed(_,
-                      _,
-                      _,
-                      suiteId,
-                      suiteClassName,
-                      testName,
-                      testText,
-                      recordedEvents,
-                      maybeThrowable,
-                      maybeDuration,
-                      _,
-                      _,
-                      _,
-                      _,
-                      _,
-                      _) =>
+      case TestFailed(
+            _,
+            _,
+            _,
+            suiteId,
+            suiteClassName,
+            testName,
+            testText,
+            recordedEvents,
+            maybeThrowable,
+            maybeDuration,
+            _,
+            _,
+            _,
+            _,
+            _,
+            _
+          ) =>
         reports.get(suiteId).foreach { report =>
           val scenario = new ScenarioModel()
           scenario.setClassName(suiteClassName.getOrElse(suiteId))
@@ -128,25 +130,27 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
             throwableStepModel.addWords(new Word(throwable.toString))
             scenarioCase.addStep(throwableStepModel)
           }
-          Try(scenarioCase.getSteps.get(scenarioCase.getSteps.size - 1)).map(lastStep =>
-            lastStep.setStatus(STEP_FAILED))
+          Try(scenarioCase.getSteps.get(scenarioCase.getSteps.size - 1))
+            .map(lastStep => lastStep.setStatus(STEP_FAILED))
           report.addScenarioModel(scenario)
         }
         ()
-      case TestSucceeded(_,
-                         _,
-                         suiteId,
-                         suiteClassName,
-                         testName,
-                         testText,
-                         recordedEvents,
-                         maybeDuration,
-                         _,
-                         _,
-                         _,
-                         _,
-                         _,
-                         _) =>
+      case TestSucceeded(
+            _,
+            _,
+            suiteId,
+            suiteClassName,
+            testName,
+            testText,
+            recordedEvents,
+            maybeDuration,
+            _,
+            _,
+            _,
+            _,
+            _,
+            _
+          ) =>
         reports.get(suiteId).foreach { report =>
           val scenario = new ScenarioModel()
           scenario.setClassName(suiteClassName.getOrElse(suiteId))

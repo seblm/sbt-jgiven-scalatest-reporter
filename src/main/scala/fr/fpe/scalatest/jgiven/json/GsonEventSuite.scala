@@ -11,8 +11,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonEventSuite {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class SuiteAbortedSerializer() extends JsonSerializer[SuiteAborted] {
 
@@ -33,8 +32,7 @@ object GsonEventSuite {
 
   }
 
-  /**
-    * Needed because throwable, duration, summary, formatter, location and payload are optionals but yields to null if
+  /** Needed because throwable, duration, summary, formatter, location and payload are optionals but yields to null if
     * non present
     */
   class SuiteAbortedDeserializer() extends JsonDeserializer[SuiteAborted] {
@@ -63,8 +61,7 @@ object GsonEventSuite {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class SuiteCompletedSerializer() extends JsonSerializer[SuiteCompleted] {
 
@@ -83,8 +80,7 @@ object GsonEventSuite {
 
   }
 
-  /**
-    * Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
+  /** Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
     */
   class SuiteCompletedDeserializer() extends JsonDeserializer[SuiteCompleted] {
 
@@ -110,8 +106,7 @@ object GsonEventSuite {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class SuiteStartingSerializer() extends JsonSerializer[SuiteStarting] {
 
@@ -129,8 +124,7 @@ object GsonEventSuite {
 
   }
 
-  /**
-    * Needed because suiteClassName, formatter, location, rerunner and payload are optionals but yields to null if non
+  /** Needed because suiteClassName, formatter, location, rerunner and payload are optionals but yields to null if non
     * present
     */
   class SuiteStartingDeserializer() extends JsonDeserializer[SuiteStarting] {

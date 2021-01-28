@@ -11,8 +11,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonEventMarkupProvided {
 
-  /**
-    * Needed because default serializer doesn't encode field type
+  /** Needed because default serializer doesn't encode field type
     */
   class MarkupProvidedSerializer() extends JsonSerializer[MarkupProvided] {
 
@@ -28,8 +27,7 @@ object GsonEventMarkupProvided {
 
   }
 
-  /**
-    * Needed because nameInfo, formatter, location and payload are optionals but yields to null if non
+  /** Needed because nameInfo, formatter, location and payload are optionals but yields to null if non
     * present
     */
   class MarkupProvidedDeserializer() extends JsonDeserializer[MarkupProvided] {

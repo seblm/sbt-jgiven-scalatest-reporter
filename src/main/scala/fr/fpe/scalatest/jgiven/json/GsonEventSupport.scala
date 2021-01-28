@@ -66,8 +66,8 @@ object GsonEventSupport {
     .registerSubtype(classOf[LineInFile])
     .registerSubtype(SeeStackDepthException.getClass)
 
-  lazy val collectionOfEventsType
-    : Type = new TypeToken[util.Collection[Event]]() {}.getType // Needed to keep runtime information of what this collection is and to choose RuntimeTypeAdapterFactory[Event]
+  // Needed to keep runtime information of what this collection is and to choose RuntimeTypeAdapterFactory[Event]
+  lazy val collectionOfEventsType: Type = new TypeToken[util.Collection[Event]]() {}.getType
 
   lazy val gson: Gson = new GsonBuilder()
     .registerTypeAdapter(classOf[Option[_]], new OptionSerializer())

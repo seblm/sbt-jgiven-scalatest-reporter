@@ -9,8 +9,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonLocation {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class TopOfClassSerializer() extends JsonSerializer[TopOfClass] {
 
@@ -26,8 +25,7 @@ object GsonLocation {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class TopOfMethodSerializer() extends JsonSerializer[TopOfMethod] {
 
@@ -44,8 +42,7 @@ object GsonLocation {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class LineInFileSerializer() extends JsonSerializer[LineInFile] {
 
@@ -63,8 +60,7 @@ object GsonLocation {
 
   }
 
-  /**
-    * Needed because filePathname is optional but yields to null if non present
+  /** Needed because filePathname is optional but yields to null if non present
     */
   class LineInFileDeserializer() extends JsonDeserializer[LineInFile] {
 
@@ -76,7 +72,7 @@ object GsonLocation {
       LineInFile(
         lineNumber = jsonObject.get("lineNumber").getAsInt,
         fileName = jsonObject.get("fileName").getAsString,
-        filePathname = Option(jsonObject.get("filePathname")).map(_.getAsString),
+        filePathname = Option(jsonObject.get("filePathname")).map(_.getAsString)
       )
     }
 

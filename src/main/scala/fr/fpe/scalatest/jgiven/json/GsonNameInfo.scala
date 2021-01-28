@@ -9,8 +9,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonNameInfo {
 
-  /**
-    * Needed because suiteClassName and testName are optionals but yields to null if non present
+  /** Needed because suiteClassName and testName are optionals but yields to null if non present
     */
   class NameInfoDeserializer() extends JsonDeserializer[NameInfo] {
 

@@ -9,8 +9,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonFormatter {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class IndentedTextSerializer() extends JsonSerializer[IndentedText] {
 

@@ -36,8 +36,7 @@ object GsonScala {
 
   }
 
-  /**
-    * Needed by MapConfig.underlying
+  /** Needed by MapConfig.underlying
     */
   class MapInstanceCreator() extends InstanceCreator[Map[_, _]] {
 
@@ -50,8 +49,7 @@ object GsonScala {
 
   }
 
-  /**
-    * Needed by MapConfig.underlying
+  /** Needed by MapConfig.underlying
     */
   class MapSerializer() extends JsonSerializer[Map[String, Any]] {
 
@@ -64,16 +62,17 @@ object GsonScala {
 
   }
 
-  /**
-    * Needed by MapConfig.underlying
+  /** Needed by MapConfig.underlying
     */
   class MapDeserializer() extends JsonDeserializer[Map[String, Any]] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
-    override def deserialize(json: JsonElement,
-                             typeOfT: Type,
-                             context: JsonDeserializationContext): Map[String, Any] = {
+    override def deserialize(
+        json: JsonElement,
+        typeOfT: Type,
+        context: JsonDeserializationContext
+    ): Map[String, Any] = {
       logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
       json.getAsJsonObject
         .entrySet()
@@ -84,8 +83,7 @@ object GsonScala {
 
   }
 
-  /**
-    * Needed by Test* events
+  /** Needed by Test* events
     */
   class IndexedSeqInstanceCreator[T]() extends InstanceCreator[IndexedSeq[T]] {
 
@@ -98,8 +96,7 @@ object GsonScala {
 
   }
 
-  /**
-    * Needed by Test* events
+  /** Needed by Test* events
     */
   class IndexedSeqSerializer[T]() extends JsonSerializer[IndexedSeq[T]] {
 
@@ -112,16 +109,17 @@ object GsonScala {
 
   }
 
-  /**
-    * Needed by Test* events
+  /** Needed by Test* events
     */
   class IndexedSeqDeserializer() extends JsonDeserializer[IndexedSeq[RecordableEvent]] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
-    override def deserialize(json: JsonElement,
-                             typeOfT: Type,
-                             context: JsonDeserializationContext): IndexedSeq[RecordableEvent] = {
+    override def deserialize(
+        json: JsonElement,
+        typeOfT: Type,
+        context: JsonDeserializationContext
+    ): IndexedSeq[RecordableEvent] = {
       logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
       context
         .deserialize[util.Collection[RecordableEvent]](json, new TypeToken[util.Collection[Event]]() {}.getType)
@@ -131,8 +129,7 @@ object GsonScala {
 
   }
 
-  /**
-    * Needed because some Throwables can't be serialized. For example, Gson fails to serialize TestFailedException with
+  /** Needed because some Throwables can't be serialized. For example, Gson fails to serialize TestFailedException with
     * message:
     * class org.scalatest.exceptions.TestFailedException declares multiple JSON fields named posOrStackDepthFun
     */
@@ -144,13 +141,13 @@ object GsonScala {
       logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
 
       context.serialize(
-        new Exception(s"${src.getClass.getName}${Option(src.getMessage).map(message => s": $message").getOrElse("")}"))
+        new Exception(s"${src.getClass.getName}${Option(src.getMessage).map(message => s": $message").getOrElse("")}")
+      )
     }
 
   }
 
-  /**
-    * Serialize object with only type field
+  /** Serialize object with only type field
     */
   class ObjectSerializer[T]() extends JsonSerializer[T] {
 

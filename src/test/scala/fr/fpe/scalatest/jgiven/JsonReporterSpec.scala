@@ -27,14 +27,16 @@ class JsonReporterSpec extends FlatSpec {
           suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
           suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
           testName = None
-        )),
+        )
+      ),
       throwable = None,
       formatter = Some(
         IndentedText(
           formattedText = "some formatted text",
           rawText = "some raw text",
           indentationLevel = 1
-        )),
+        )
+      ),
       location = Some(TopOfClass(className = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec")),
       payload = None,
       threadName = "pool-5-thread-2",
@@ -85,7 +87,8 @@ class JsonReporterSpec extends FlatSpec {
           suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
           suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
           testName = None
-        )),
+        )
+      ),
       throwable = None,
       formatter = None,
       location =
@@ -111,14 +114,18 @@ class JsonReporterSpec extends FlatSpec {
           suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
           suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
           testName = None
-        )),
+        )
+      ),
       formatter = None,
       location = Some(
         LineInFile(
           23,
           "TVSetSpec.scala",
           Some(
-            "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."))),
+            "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+          )
+        )
+      ),
       payload = None,
       threadName = "pool-5-thread-2",
       timeStamp = Instant.parse("2019-06-25T21:55:00Z").toEpochMilli
@@ -140,7 +147,8 @@ class JsonReporterSpec extends FlatSpec {
           suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
           suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
           testName = None
-        )),
+        )
+      ),
       throwable = None,
       formatter = None,
       location = None,
@@ -171,7 +179,8 @@ class JsonReporterSpec extends FlatSpec {
           suitesCompletedCount = 1,
           suitesAbortedCount = 0,
           scopesPendingCount = 0
-        )),
+        )
+      ),
       formatter = None,
       location = None,
       payload = None,
@@ -199,7 +208,8 @@ class JsonReporterSpec extends FlatSpec {
           suitesCompletedCount = 1,
           suitesAbortedCount = 0,
           scopesPendingCount = 0
-        )),
+        )
+      ),
       formatter = None,
       location = None,
       payload = None,
@@ -245,7 +255,8 @@ class JsonReporterSpec extends FlatSpec {
           suitesCompletedCount = 1,
           suitesAbortedCount = 0,
           scopesPendingCount = 0
-        )),
+        )
+      ),
       formatter = None,
       location = None,
       payload = None,
@@ -411,7 +422,8 @@ class JsonReporterSpec extends FlatSpec {
               suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
               suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
               testName = None
-            )),
+            )
+          ),
           throwable = None,
           formatter = None,
           location = None,
@@ -428,13 +440,14 @@ class JsonReporterSpec extends FlatSpec {
               suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
               suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
               testName = None
-            )),
+            )
+          ),
           formatter = None,
           location = None,
           payload = None,
           threadName = "pool-5-thread-2",
           timeStamp = Instant.parse("2019-06-25T21:55:00Z").toEpochMilli
-        ),
+        )
       ),
       throwable = None,
       duration = Some(21L),
@@ -471,7 +484,8 @@ class JsonReporterSpec extends FlatSpec {
               suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
               suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
               testName = None
-            )),
+            )
+          ),
           throwable = None,
           formatter = None,
           location = None,
@@ -488,13 +502,14 @@ class JsonReporterSpec extends FlatSpec {
               suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
               suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
               testName = None
-            )),
+            )
+          ),
           formatter = None,
           location = None,
           payload = None,
           threadName = "pool-5-thread-2",
           timeStamp = Instant.parse("2019-06-25T21:55:00Z").toEpochMilli
-        ),
+        )
       ),
       throwable = None,
       duration = Some(21L),
@@ -551,7 +566,8 @@ class JsonReporterSpec extends FlatSpec {
               suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
               suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
               testName = None
-            )),
+            )
+          ),
           throwable = None,
           formatter = None,
           location = None,
@@ -568,13 +584,14 @@ class JsonReporterSpec extends FlatSpec {
               suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
               suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
               testName = None
-            )),
+            )
+          ),
           formatter = None,
           location = None,
           payload = None,
           threadName = "pool-5-thread-2",
           timeStamp = Instant.parse("2019-06-25T21:55:00Z").toEpochMilli
-        ),
+        )
       ),
       duration = Some(21L),
       formatter = None,
@@ -630,7 +647,8 @@ class JsonReporterSpec extends FlatSpec {
               suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
               suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
               testName = None
-            )),
+            )
+          ),
           throwable = None,
           formatter = None,
           location = None,
@@ -647,13 +665,14 @@ class JsonReporterSpec extends FlatSpec {
               suiteId = "name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec",
               suiteClassName = Some("name.lemerdy.sebastian.scalatest.jgiven.TVSetSpec"),
               testName = None
-            )),
+            )
+          ),
           formatter = None,
           location = None,
           payload = None,
           threadName = "pool-5-thread-2",
           timeStamp = Instant.parse("2019-06-25T21:55:00Z").toEpochMilli
-        ),
+        )
       ),
       duration = Some(21L),
       formatter = None,

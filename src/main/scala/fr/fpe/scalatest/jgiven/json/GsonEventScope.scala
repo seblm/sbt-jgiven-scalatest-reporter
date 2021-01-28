@@ -11,8 +11,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonEventScope {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class ScopeClosedSerializer() extends JsonSerializer[ScopeClosed] {
 
@@ -28,8 +27,7 @@ object GsonEventScope {
 
   }
 
-  /**
-    * Needed because formatter, location and payload are optionals but yields to null if non present
+  /** Needed because formatter, location and payload are optionals but yields to null if non present
     */
   class ScopeClosedDeserializer() extends JsonDeserializer[ScopeClosed] {
 
@@ -52,8 +50,7 @@ object GsonEventScope {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class ScopeOpenedSerializer() extends JsonSerializer[ScopeOpened] {
 
@@ -69,8 +66,7 @@ object GsonEventScope {
 
   }
 
-  /**
-    * Needed because formatter, location and payload are optionals but yields to null if non present
+  /** Needed because formatter, location and payload are optionals but yields to null if non present
     */
   class ScopeOpenedDeserializer() extends JsonDeserializer[ScopeOpened] {
 
@@ -93,8 +89,7 @@ object GsonEventScope {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class ScopePendingSerializer() extends JsonSerializer[ScopePending] {
 
@@ -110,8 +105,7 @@ object GsonEventScope {
 
   }
 
-  /**
-    * Needed because formatter, location and payload are optionals but yields to null if non present
+  /** Needed because formatter, location and payload are optionals but yields to null if non present
     */
   class ScopePendingDeserializer() extends JsonDeserializer[ScopePending] {
 

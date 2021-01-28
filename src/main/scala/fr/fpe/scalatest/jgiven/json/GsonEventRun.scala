@@ -12,8 +12,7 @@ import org.slf4j.LoggerFactory.getLogger
 
 object GsonEventRun {
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class RunAbortedSerializer() extends JsonSerializer[RunAborted] {
 
@@ -31,8 +30,7 @@ object GsonEventRun {
 
   }
 
-  /**
-    * Needed because throwable, duration, summary, formatter, location and payload are optionals but yields to null if
+  /** Needed because throwable, duration, summary, formatter, location and payload are optionals but yields to null if
     * non present
     */
   class RunAbortedDeserializer() extends JsonDeserializer[RunAborted] {
@@ -58,8 +56,7 @@ object GsonEventRun {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class RunCompletedSerializer() extends JsonSerializer[RunCompleted] {
 
@@ -75,8 +72,7 @@ object GsonEventRun {
 
   }
 
-  /**
-    * Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
+  /** Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
     */
   class RunCompletedDeserializer() extends JsonDeserializer[RunCompleted] {
 
@@ -99,8 +95,7 @@ object GsonEventRun {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class RunStartingSerializer() extends JsonSerializer[RunStarting] {
 
@@ -116,8 +111,7 @@ object GsonEventRun {
 
   }
 
-  /**
-    * Needed because formatter, location and payload are optionals but yields to null if non present
+  /** Needed because formatter, location and payload are optionals but yields to null if non present
     */
   class RunStartingDeserializer() extends JsonDeserializer[RunStarting] {
 
@@ -140,8 +134,7 @@ object GsonEventRun {
 
   }
 
-  /**
-    * Needed because default serializer doesn't encode type field
+  /** Needed because default serializer doesn't encode type field
     */
   class RunStoppedSerializer() extends JsonSerializer[RunStopped] {
 
@@ -157,8 +150,7 @@ object GsonEventRun {
 
   }
 
-  /**
-    * Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
+  /** Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
     */
   class RunStoppedDeserializer() extends JsonDeserializer[RunStopped] {
 
