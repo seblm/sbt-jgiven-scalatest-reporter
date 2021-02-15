@@ -1,4 +1,4 @@
 > test
-$ exists target/jgiven-reports/json/fr.fpe.scalatest.jgiven.TVSetSpec.json
+$ exists target/jgiven-reports/json/io.github.seblm.scalatest.jgiven.TVSetSpec.json
 $ exists target/jgiven-reports/html/index.html
 $ exists target/jgiven-reports/html/data/data0.js

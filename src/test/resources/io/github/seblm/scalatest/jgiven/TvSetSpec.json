@@ -1,0 +1,559 @@
+[
+  {
+    "type": "RunStarting",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        0
+      ]
+    },
+    "threadName": "ScalaTest-run",
+    "timeStamp": 1562792964002,
+    "testCount": 2,
+    "configMap": {
+      "underlying": {}
+    }
+  },
+  {
+    "type": "SuiteStarting",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        1
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "TVSetSpec:",
+      "rawText": "TVSetSpec",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "TopOfClass",
+      "className": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+    },
+    "threadName": "ScalaTest-run",
+    "timeStamp": 1562792964018,
+    "suiteName": "TVSetSpec",
+    "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "rerunner": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+  },
+  {
+    "type": "InfoProvided",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        2
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "As a TV set owner",
+      "rawText": "As a TV set owner",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 8,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964052,
+    "message": "As a TV set owner",
+    "nameInfo": {
+      "suiteName": "TVSetSpec",
+      "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+      "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+    }
+  },
+  {
+    "type": "InfoProvided",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        3
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "I want to be able to turn the TV on and off",
+      "rawText": "I want to be able to turn the TV on and off",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 9,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964052,
+    "message": "I want to be able to turn the TV on and off",
+    "nameInfo": {
+      "suiteName": "TVSetSpec",
+      "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+      "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+    }
+  },
+  {
+    "type": "InfoProvided",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        4
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "So I can watch TV when I want",
+      "rawText": "So I can watch TV when I want",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 10,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964053,
+    "message": "So I can watch TV when I want",
+    "nameInfo": {
+      "suiteName": "TVSetSpec",
+      "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+      "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+    }
+  },
+  {
+    "type": "InfoProvided",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        5
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "And save energy when I\u0027m not watching TV",
+      "rawText": "And save energy when I\u0027m not watching TV",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 11,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964053,
+    "message": "And save energy when I\u0027m not watching TV",
+    "nameInfo": {
+      "suiteName": "TVSetSpec",
+      "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+      "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+    }
+  },
+  {
+    "type": "ScopeOpened",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        6
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "Feature: TV power button",
+      "rawText": "Feature: TV power button",
+      "indentationLevel": 0
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 13,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964056,
+    "message": "Feature: TV power button",
+    "nameInfo": {
+      "suiteName": "TVSetSpec",
+      "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+      "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+    }
+  },
+  {
+    "type": "TestStarting",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        7
+      ]
+    },
+    "formatter": {
+      "type": "MotionToSuppress$"
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 14,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964063,
+    "suiteName": "TVSetSpec",
+    "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "testName": "Feature: TV power button Scenario: User presses power button when TV is off",
+    "testText": "Scenario: User presses power button when TV is off",
+    "rerunner": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+  },
+  {
+    "type": "TestSucceeded",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        11
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "  Scenario: User presses power button when TV is off",
+      "rawText": "Scenario: User presses power button when TV is off",
+      "indentationLevel": 1
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 14,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964098,
+    "suiteName": "TVSetSpec",
+    "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "testName": "Feature: TV power button Scenario: User presses power button when TV is off",
+    "testText": "Scenario: User presses power button when TV is off",
+    "recordedEvents": [
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            8
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "    Given a TV set that is switched off",
+          "rawText": "Given a TV set that is switched off",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 15,
+          "fileName": "TVSetSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetSpec",
+        "timeStamp": 1562792964093,
+        "message": "Given a TV set that is switched off",
+        "nameInfo": {
+          "suiteName": "TVSetSpec",
+          "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "testName": "Feature: TV power button Scenario: User presses power button when TV is off"
+        }
+      },
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            9
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "    When the power button is pressed",
+          "rawText": "When the power button is pressed",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 19,
+          "fileName": "TVSetSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetSpec",
+        "timeStamp": 1562792964093,
+        "message": "When the power button is pressed",
+        "nameInfo": {
+          "suiteName": "TVSetSpec",
+          "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "testName": "Feature: TV power button Scenario: User presses power button when TV is off"
+        }
+      },
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            10
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "    Then the TV should switch on",
+          "rawText": "Then the TV should switch on",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 22,
+          "fileName": "TVSetSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetSpec",
+        "timeStamp": 1562792964093,
+        "message": "Then the TV should switch on",
+        "nameInfo": {
+          "suiteName": "TVSetSpec",
+          "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "testName": "Feature: TV power button Scenario: User presses power button when TV is off"
+        }
+      }
+    ],
+    "duration": 29,
+    "rerunner": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+  },
+  {
+    "type": "TestStarting",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        12
+      ]
+    },
+    "formatter": {
+      "type": "MotionToSuppress$"
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 26,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964101,
+    "suiteName": "TVSetSpec",
+    "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "testName": "Feature: TV power button Scenario: User presses power button when TV is on",
+    "testText": "Scenario: User presses power button when TV is on",
+    "rerunner": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+  },
+  {
+    "type": "TestFailed",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        16
+      ]
+    },
+    "formatter": {
+      "type": "IndentedText",
+      "formattedText": "  Scenario: User presses power button when TV is on",
+      "rawText": "Scenario: User presses power button when TV is on",
+      "indentationLevel": 1
+    },
+    "location": {
+      "type": "SeeStackDepthException$"
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964129,
+    "message": "tv.isOn was false",
+    "suiteName": "TVSetSpec",
+    "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "testName": "Feature: TV power button Scenario: User presses power button when TV is on",
+    "testText": "Scenario: User presses power button when TV is on",
+    "recordedEvents": [
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            13
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "    Given a TV set that is switched on",
+          "rawText": "Given a TV set that is switched on",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 28,
+          "fileName": "TVSetSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetSpec",
+        "timeStamp": 1562792964122,
+        "message": "Given a TV set that is switched on",
+        "nameInfo": {
+          "suiteName": "TVSetSpec",
+          "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "testName": "Feature: TV power button Scenario: User presses power button when TV is on"
+        }
+      },
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            14
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "    When the power button is pressed",
+          "rawText": "When the power button is pressed",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 33,
+          "fileName": "TVSetSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetSpec",
+        "timeStamp": 1562792964122,
+        "message": "When the power button is pressed",
+        "nameInfo": {
+          "suiteName": "TVSetSpec",
+          "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "testName": "Feature: TV power button Scenario: User presses power button when TV is on"
+        }
+      },
+      {
+        "type": "InfoProvided",
+        "ordinal": {
+          "runStamp": 1,
+          "stamps": [
+            15
+          ]
+        },
+        "formatter": {
+          "type": "IndentedText",
+          "formattedText": "    Then the TV should switch off",
+          "rawText": "Then the TV should switch off",
+          "indentationLevel": 2
+        },
+        "location": {
+          "type": "LineInFile",
+          "lineNumber": 36,
+          "fileName": "TVSetSpec.scala",
+          "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+        },
+        "threadName": "ScalaTest-run-running-TVSetSpec",
+        "timeStamp": 1562792964122,
+        "message": "Then the TV should switch off",
+        "nameInfo": {
+          "suiteName": "TVSetSpec",
+          "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+          "testName": "Feature: TV power button Scenario: User presses power button when TV is on"
+        }
+      }
+    ],
+    "throwable": {
+      "detailMessage": "org.scalatest.exceptions.TestFailedException: tv.isOn was false",
+      "stackTrace": [],
+      "suppressedExceptions": []
+    },
+    "duration": 20,
+    "rerunner": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+  },
+  {
+    "type": "ScopeClosed",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        17
+      ]
+    },
+    "formatter": {
+      "type": "MotionToSuppress$"
+    },
+    "location": {
+      "type": "LineInFile",
+      "lineNumber": 13,
+      "fileName": "TVSetSpec.scala",
+      "filePathname": "Please set the environment variable SCALACTIC_FILL_FILE_PATHNAMES to yes at compile time to enable this feature."
+    },
+    "threadName": "ScalaTest-run-running-TVSetSpec",
+    "timeStamp": 1562792964131,
+    "message": "Feature: TV power button",
+    "nameInfo": {
+      "suiteName": "TVSetSpec",
+      "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+      "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+    }
+  },
+  {
+    "type": "SuiteCompleted",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        18
+      ]
+    },
+    "formatter": {
+      "type": "MotionToSuppress$"
+    },
+    "location": {
+      "type": "TopOfClass",
+      "className": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+    },
+    "threadName": "ScalaTest-run",
+    "timeStamp": 1562792964161,
+    "suiteName": "TVSetSpec",
+    "suiteId": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "suiteClassName": "io.github.seblm.scalatest.jgiven.TVSetSpec",
+    "duration": 145,
+    "rerunner": "io.github.seblm.scalatest.jgiven.TVSetSpec"
+  },
+  {
+    "type": "RunCompleted",
+    "ordinal": {
+      "runStamp": 1,
+      "stamps": [
+        19
+      ]
+    },
+    "threadName": "ScalaTest-run",
+    "timeStamp": 1562792964164,
+    "duration": 340,
+    "summary": {
+      "testsSucceededCount": 1,
+      "testsFailedCount": 1,
+      "testsIgnoredCount": 0,
+      "testsPendingCount": 0,
+      "testsCanceledCount": 0,
+      "suitesCompletedCount": 1,
+      "suitesAbortedCount": 0,
+      "scopesPendingCount": 0,
+      "testsCompletedCount": 2,
+      "totalTestsCount": 2
+    }
+  }
+]

@@ -4,19 +4,16 @@ lazy val root = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(
     name := "sbt-jgiven-scalatest-reporter",
-    organization := "fr.fpe",
+    organization := "io.github.seblm",
     version := "0.1-SNAPSHOT",
     scalaVersion := "2.12.8",
-    scriptedLaunchOpts := {
-      scriptedLaunchOpts.value ++
-        Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
-    },
+    scriptedLaunchOpts := { scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-Dplugin.version=" + version.value) },
     scriptedBufferLog := false,
     libraryDependencies += gson,
     libraryDependencies += `jgiven-core`,
     libraryDependencies += `jgiven-html5-report`,
     libraryDependencies += scalatest,
-    libraryDependencies += `slf4j-api`,
+    libraryDependencies += `slf4j-api`
   )
 
-initialCommands in console := """import fr.fpe.scalatest.jgiven._"""
+initialCommands in console := "import io.github.seblm.scalatest.jgiven._"
