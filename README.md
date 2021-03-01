@@ -12,11 +12,20 @@ Run `scripted` for [sbt script tests](https://www.scala-sbt.org/1.x/docs/Testing
 
 ### Publishing
 
-`sbt publish`
+`sbt publishSigned sonatypeBundleRelease`
+
+According to [documentation][sbt-sonatype], needs gpg with a default signature, gpg-agent running
+(`gpg-connect-agent /bye`) and `~/.sbt/1.0/sonatype.sbt` with:
+
+```sbt
+credentials += Credentials("Sonatype Nexus Repository Manager",
+       "oss.sonatype.org",
+       "username",
+       "passphrase")
+```
 
 ### Backlog
 
- 1. improvement: split scalatest events json report into another plugin
- 1. improvement: use gitlabci
- 1. task: publish plugin into artifactory 
  1. improvement: migrate to scala 2.13
+
+[sbt-sonatype]: https://github.com/xerial/sbt-sonatype
