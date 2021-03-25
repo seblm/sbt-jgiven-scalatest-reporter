@@ -1,17 +1,21 @@
 package io.github.seblm.scalatest.jgiven
 
 import com.tngtech.jgiven.report.model.ExecutionStatus.SUCCESS
-import JGivenHtml5ReporterFixture._
-import org.scalatest._
+import io.github.seblm.scalatest.jgiven.JGivenHtml5ReporterFixture._
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.{BeforeAndAfter, GivenWhenThen}
 
-class JGivenHtml5ReporterWordSpec extends FeatureSpec with GivenWhenThen with Matchers with BeforeAndAfter {
+class JGivenHtml5ReporterWordSpec extends AnyFeatureSpec with GivenWhenThen with Matchers with BeforeAndAfter {
+
+  private val suiteId_ = "io.github.seblm.scalatest.jgiven.TVSetWordSpec"
 
   info("As a test writer")
   info("I want my scalatest FeatureSpec being viewable into a browser")
   info("So anyone interested into the living documentation of my project can view it")
 
-  feature("Generate json report") {
-    scenario("Register a successful test") {
+  Feature("Generate json report") {
+    Scenario("Register a successful test") {
       val reporter: JGivenHtml5Reporter = given_sbt_jgiven_scalatest_reporter_is_installed(this)
 
       when_scalatest_is_executed(this, reporter, "TvSetWordSpec.json")
@@ -25,7 +29,5 @@ class JGivenHtml5ReporterWordSpec extends FeatureSpec with GivenWhenThen with Ma
   after {
     JGivenHtml5ReporterFixture.removeFiles()
   }
-
-  private val suiteId_ = "io.github.seblm.scalatest.jgiven.TVSetWordSpec"
 
 }

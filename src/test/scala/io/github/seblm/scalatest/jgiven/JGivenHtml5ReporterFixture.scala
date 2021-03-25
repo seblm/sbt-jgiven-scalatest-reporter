@@ -1,12 +1,12 @@
 package io.github.seblm.scalatest.jgiven
 
 import io.github.seblm.scalatest.jgiven.json.GsonEventSupport
-
-import java.nio.file.{Files, Paths}
-import java.util
 import org.scalatest.GivenWhenThen
 import org.scalatest.events.Event
 
+import java.nio.file.{Files, Paths}
+import java.util
+import scala.annotation.tailrec
 import scala.collection.JavaConverters._
 import scala.io.Source
 
@@ -32,6 +32,7 @@ object JGivenHtml5ReporterFixture {
       .asScala
       .toList
 
+  @tailrec
   def applyEvents(reporter: JGivenHtml5Reporter, events: Seq[Event]): JGivenHtml5Reporter = events match {
     case Nil => reporter
     case event :: tail =>

@@ -1,9 +1,10 @@
 package io.github.seblm.scalatest.jgiven
 
-import org.scalatest._
+import org.scalatest.GivenWhenThen
+import org.scalatest.wordspec.AnyWordSpec
 
 @TVSetFeature
-class TVSetWordSpec extends WordSpec with GivenWhenThen {
+class TVSetWordSpec extends AnyWordSpec with GivenWhenThen {
 
   info("As a TV set owner")
   info("I want to be able to turn the TV on and off")

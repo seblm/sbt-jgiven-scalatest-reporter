@@ -5,10 +5,10 @@ lazy val root = (project in file("."))
   .settings(
     name := "sbt-jgiven-scalatest-reporter",
     organization := "io.github.seblm",
-    version := "0.1",
+    version := "0.2",
     publishTo := sonatypePublishToBundle.value,
-    scalaVersion := "2.12.8",
-    scriptedLaunchOpts := { scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-Dplugin.version=" + version.value) },
+    scalaVersion := "2.12.13",
+    scriptedLaunchOpts := { scriptedLaunchOpts.value ++ Seq("-Dplugin.version=" + version.value) },
     scriptedBufferLog := false,
     libraryDependencies += gson,
     libraryDependencies += `jgiven-core`,

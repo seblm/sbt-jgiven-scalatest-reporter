@@ -1,17 +1,18 @@
 package io.github.seblm.scalatest.jgiven
 
-import org.scalatest._
+import org.scalatest.GivenWhenThen
+import org.scalatest.featurespec.AnyFeatureSpec
 
 @TVSetFeature
-class TVSetSpec extends FeatureSpec with GivenWhenThen {
+class TVSetSpec extends AnyFeatureSpec with GivenWhenThen {
 
   info("As a TV set owner")
   info("I want to be able to turn the TV on and off")
   info("So I can watch TV when I want")
   info("And save energy when I'm not watching TV")
 
-  feature("TV power button") {
-    scenario("User presses power button when TV is off") {
+  Feature("TV power button") {
+    Scenario("User presses power button when TV is off") {
       Given("a TV set that is switched off")
       val tv = new TVSet
       assert(!tv.isOn)
@@ -23,7 +24,7 @@ class TVSetSpec extends FeatureSpec with GivenWhenThen {
       assert(tv.isOn)
     }
 
-    scenario("User presses power button when TV is on") {
+    Scenario("User presses power button when TV is on") {
 
       Given("a TV set that is switched on")
       val tv = new TVSet

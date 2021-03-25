@@ -92,6 +92,7 @@ object GsonEventTest {
         "recordedEvents",
         context.serialize(src.recordedEvents, new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType)
       )
+      testFailed.add("analysis", context.serialize(src.analysis, new TypeToken[IndexedSeq[String]]() {}.getType))
       src.throwable.foreach(throwable =>
         testFailed.add("throwable", context.serialize(throwable, new TypeToken[Throwable]() {}.getType))
       )
@@ -122,6 +123,7 @@ object GsonEventTest {
         testText = jsonObject.get("testText").getAsString,
         recordedEvents = context
           .deserialize(jsonObject.get("recordedEvents"), new TypeToken[IndexedSeq[RecordableEvent]]() {}.getType),
+        analysis = context.deserialize(jsonObject.get("analysis"), new TypeToken[IndexedSeq[String]]() {}.getType),
         throwable = Option(context.deserialize(jsonObject.get("throwable"), new TypeToken[Throwable]() {}.getType)),
         duration = Option(jsonObject.get("duration")).map(_.getAsLong),
         formatter = Option(context.deserialize(jsonObject.get("formatter"), new TypeToken[Formatter]() {}.getType)),
