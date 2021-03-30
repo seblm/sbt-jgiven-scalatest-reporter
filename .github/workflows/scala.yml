@@ -30,4 +30,6 @@ jobs:
       - name: Check Scalafmt
         run: sbt scalafmtCheckAll
       - name: Run tests
-        run: sbt test scripted
+        run: sbt test
+      - name: Run scripted tests
+        run: sbt jgiven-scalatest-reporter/publishLocal scripted
