@@ -1,56 +1,12 @@
 # sbt-jgiven-scalatest-reporter
 
-Generates jgiven html5 reports based on scalatest tests execution.
+Generates jgiven html5 reports based on ScalaTest tests execution.
 
-From:
+## Example
 
-```scala
-package io.github.seblm.scalatest.jgiven
+Here is what you will get starting from [ScalaTest FeatureSpec basic example]:
 
-import org.scalatest.GivenWhenThen
-import org.scalatest.featurespec.AnyFeatureSpec
-
-@TVSetFeature
-class TVSetSpec extends AnyFeatureSpec with GivenWhenThen {
-
-  info("As a TV set owner")
-  info("I want to be able to turn the TV on and off")
-  info("So I can watch TV when I want")
-  info("And save energy when I'm not watching TV")
-
-  Feature("TV power button") {
-    Scenario("User presses power button when TV is off") {
-      Given("a TV set that is switched off")
-      val tv = new TVSet
-      assert(!tv.isOn)
-
-      When("the power button is pressed")
-      tv.pressPowerButton()
-
-      Then("the TV should switch on")
-      assert(tv.isOn)
-    }
-
-    Scenario("User presses power button when TV is on") {
-
-      Given("a TV set that is switched on")
-      val tv = new TVSet
-      tv.pressPowerButton()
-      assert(tv.isOn)
-
-      When("the power button is pressed")
-      tv.pressPowerButton()
-
-      Then("the TV should switch off")
-      assert(!tv.isOn)
-    }
-  }
-}
-```
-
-To:
-
-![a JGiven HTML5 report example](doc/JGivenReport.png?raw=true)
+![Example of produced report](/../assets/example-screenshot.png?raw=true)
 
 ## Usage
 
@@ -92,7 +48,7 @@ Then you can visit `target/jgiven-reports/html/index.html`.
 
 ### Testing
 
-Run `scripted` for [sbt script tests](https://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
+Run `scripted` for [sbt script tests].
 
 ### Publishing
 
@@ -108,4 +64,6 @@ credentials += Credentials("Sonatype Nexus Repository Manager",
        "passphrase")
 ```
 
+[sbt script tests](https://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html)
 [sbt-sonatype]: https://github.com/xerial/sbt-sonatype
+[ScalaTest FeatureSpec basic example]: https://www.scalatest.org/at_a_glance/FeatureSpec
