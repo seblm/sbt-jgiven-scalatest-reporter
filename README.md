@@ -28,7 +28,7 @@ Add theses settings to your `build.sbt` file:
 
 ```sbt
 libraryDependencies += "io.github.seblm" %% "jgiven-scalatest-reporter" % "0.4-SNAPSHOT" % Test,
-testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-C", "io.github.seblm.scalatest.jgiven.JGivenHtml5Reporter"),
+Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-C", "io.github.seblm.scalatest.jgiven.JGivenHtml5Reporter"),
 ```
 
 When you run your ScalaTest tests as usual with sbt.

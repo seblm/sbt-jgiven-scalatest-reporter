@@ -9,7 +9,7 @@ object SbtJgivenScalatestReporterPlugin extends AutoPlugin {
 
   override lazy val projectSettings = Seq(
     libraryDependencies += "io.github.seblm" %% "jgiven-scalatest-reporter" % "0.4-SNAPSHOT" % Test,
-    testOptions in Test +=
+    Test / testOptions +=
       Tests.Argument(TestFrameworks.ScalaTest, "-C", "io.github.seblm.scalatest.jgiven.JGivenHtml5Reporter")
   )
 

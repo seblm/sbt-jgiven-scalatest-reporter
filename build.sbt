@@ -32,4 +32,4 @@ lazy val `jgiven-scalatest-reporter` = (project in file("jgiven-scalatest-report
     Test / parallelExecution := false
   )
 
-initialCommands in console := "import io.github.seblm.scalatest.jgiven._"
+console / initialCommands := "import io.github.seblm.scalatest.jgiven._"
