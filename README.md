@@ -59,7 +59,7 @@ To:
 Add this plugin to your `project/plugins.sbt` file:
 
 ```sbt
-addSbtPlugin("io.github.seblm" % "sbt-jgiven-scalatest-reporter" % "0.3")
+addSbtPlugin("io.github.seblm" % "sbt-jgiven-scalatest-reporter" % "0.4-SNAPSHOT")
 ```
 
 When you run your ScalaTest tests as usual with sbt.
@@ -71,7 +71,7 @@ Then you can visit `target/jgiven-reports/html/index.html`.
 Add theses settings to your `build.sbt` file:
 
 ```sbt
-libraryDependencies += "io.github.seblm" %% "jgiven-scalatest-reporter" % "0.3" % Test,
+libraryDependencies += "io.github.seblm" %% "jgiven-scalatest-reporter" % "0.4-SNAPSHOT" % Test,
 testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-C", "io.github.seblm.scalatest.jgiven.JGivenHtml5Reporter"),
 ```
 

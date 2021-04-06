@@ -2,7 +2,7 @@ import Dependencies._
 
 lazy val commonSettings = Seq(
   organization := "io.github.seblm",
-  version := "0.3",
+  version := "0.4-SNAPSHOT",
   scalacOptions += "-deprecation",
   publishTo := sonatypePublishToBundle.value
 )
