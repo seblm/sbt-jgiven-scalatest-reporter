@@ -1,8 +1,8 @@
-package io.github.seblm.scalatest.jgiven.json
+package io.github.seblm.scalatest.json
 
 import com.google.gson._
 import com.google.gson.reflect.TypeToken
-import io.github.seblm.scalatest.jgiven.json.GsonEventSupport.serializeEvent
+import io.github.seblm.scalatest.json.GsonEventSupport.serializeEvent
 import org.scalatest.events._
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory.getLogger

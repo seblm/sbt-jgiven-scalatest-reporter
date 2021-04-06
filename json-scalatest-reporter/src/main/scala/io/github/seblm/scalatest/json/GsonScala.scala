@@ -1,4 +1,4 @@
-package io.github.seblm.scalatest.jgiven.json
+package io.github.seblm.scalatest.json
 
 import com.google.gson._
 import com.google.gson.reflect.TypeToken

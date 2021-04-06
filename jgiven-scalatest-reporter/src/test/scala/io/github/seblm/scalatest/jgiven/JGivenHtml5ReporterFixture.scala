@@ -1,6 +1,6 @@
 package io.github.seblm.scalatest.jgiven
 
-import io.github.seblm.scalatest.jgiven.json.GsonEventSupport
+import io.github.seblm.scalatest.json.GsonEventSupport
 import org.scalatest.GivenWhenThen
 import org.scalatest.events.Event
 

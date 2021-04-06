@@ -1,6 +1,5 @@
-package io.github.seblm.scalatest.jgiven
+package io.github.seblm.scalatest.json
 
-import io.github.seblm.scalatest.jgiven.json.GsonEventSupport
 import org.scalatest.ConfigMap
 import org.scalatest.events._
 import org.scalatest.flatspec.AnyFlatSpec

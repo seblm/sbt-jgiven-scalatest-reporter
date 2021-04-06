@@ -1,8 +1,7 @@
-package io.github.seblm.scalatest.jgiven
+package io.github.seblm.scalatest.json
 
-import io.github.seblm.scalatest.jgiven.json.GsonEventSupport
 import org.scalatest.ResourcefulReporter
-import org.scalatest.events._
+import org.scalatest.events.Event
 
 import java.io.FileWriter
 import java.nio.file.Paths

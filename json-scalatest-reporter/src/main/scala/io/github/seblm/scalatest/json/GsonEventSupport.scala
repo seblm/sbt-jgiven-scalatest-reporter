@@ -1,21 +1,21 @@
-package io.github.seblm.scalatest.jgiven.json
+package io.github.seblm.scalatest.json
 
 import com.google.gson.reflect.TypeToken
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory
 import com.google.gson.{Gson, GsonBuilder, JsonObject, JsonSerializationContext}
-import io.github.seblm.scalatest.jgiven.json.GsonEventAlertProvided._
-import io.github.seblm.scalatest.jgiven.json.GsonEventDiscovery._
-import io.github.seblm.scalatest.jgiven.json.GsonEventInfoProvided._
-import io.github.seblm.scalatest.jgiven.json.GsonEventMarkupProvided._
-import io.github.seblm.scalatest.jgiven.json.GsonEventNoteProvided._
-import io.github.seblm.scalatest.jgiven.json.GsonEventRun._
-import io.github.seblm.scalatest.jgiven.json.GsonEventScope._
-import io.github.seblm.scalatest.jgiven.json.GsonEventSuite._
-import io.github.seblm.scalatest.jgiven.json.GsonEventTest._
-import io.github.seblm.scalatest.jgiven.json.GsonFormatter.IndentedTextSerializer
-import io.github.seblm.scalatest.jgiven.json.GsonLocation._
-import io.github.seblm.scalatest.jgiven.json.GsonNameInfo.NameInfoDeserializer
-import io.github.seblm.scalatest.jgiven.json.GsonScala._
+import io.github.seblm.scalatest.json.GsonEventAlertProvided._
+import io.github.seblm.scalatest.json.GsonEventDiscovery._
+import io.github.seblm.scalatest.json.GsonEventInfoProvided._
+import io.github.seblm.scalatest.json.GsonEventMarkupProvided._
+import io.github.seblm.scalatest.json.GsonEventNoteProvided._
+import io.github.seblm.scalatest.json.GsonEventRun._
+import io.github.seblm.scalatest.json.GsonEventScope._
+import io.github.seblm.scalatest.json.GsonEventSuite._
+import io.github.seblm.scalatest.json.GsonEventTest._
+import io.github.seblm.scalatest.json.GsonFormatter.IndentedTextSerializer
+import io.github.seblm.scalatest.json.GsonLocation._
+import io.github.seblm.scalatest.json.GsonNameInfo.NameInfoDeserializer
+import io.github.seblm.scalatest.json.GsonScala._
 import org.scalatest.events._
 
 import java.lang.reflect.Type

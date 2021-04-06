@@ -1,4 +1,4 @@
-package io.github.seblm.scalatest.jgiven.json
+package io.github.seblm.scalatest.json
 
 import com.google.gson.{JsonDeserializationContext, JsonDeserializer, JsonElement}
 import org.scalatest.events.NameInfo

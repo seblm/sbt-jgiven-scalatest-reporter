@@ -1,7 +1,7 @@
-package io.github.seblm.scalatest.jgiven.json
+package io.github.seblm.scalatest.json
 
 import com.google.gson._
-import org.scalatest.events._
+import org.scalatest.events.IndentedText
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory.getLogger
 
