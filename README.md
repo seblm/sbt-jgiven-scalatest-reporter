@@ -1,4 +1,4 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.seblm/sbt-jgiven-scalatest-reporter/badge.svg)](https://maven-badges.herokuapp.com/io.github.seblm/sbt-jgiven-scalatest-reporter)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.seblm/sbt-jgiven-scalatest-reporter/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.seblm/sbt-jgiven-scalatest-reporter)
 
 Generates jgiven html5 reports based on ScalaTest tests execution.
 
@@ -16,7 +16,7 @@ Here is what you will get starting from
 Add this plugin to your `project/plugins.sbt` file:
 
 ```sbt
-addSbtPlugin("io.github.seblm" % "sbt-jgiven-scalatest-reporter" % "0.4")
+addSbtPlugin("io.github.seblm" % "sbt-jgiven-scalatest-reporter" % "0.5-SNAPSHOT")
 ```
 
 When you run your ScalaTest tests as usual with sbt.
@@ -28,7 +28,7 @@ Then you can visit `target/jgiven-reports/html/index.html`.
 Add theses settings to your `build.sbt` file:
 
 ```sbt
-libraryDependencies += "io.github.seblm" %% "jgiven-scalatest-reporter" % "0.4" % Test,
+libraryDependencies += "io.github.seblm" %% "jgiven-scalatest-reporter" % "0.5-SNAPSHOT" % Test,
 Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-C", "io.github.seblm.scalatest.jgiven.JGivenHtml5Reporter"),
 ```
 
