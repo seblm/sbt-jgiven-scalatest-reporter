@@ -20,7 +20,7 @@ lazy val root = (project in file("."))
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++ Seq("-Dplugin.version=" + version.value) },
     scriptedBufferLog := false
   )
-  .aggregate(`jgiven-scalatest-reporter`, `json-scalatest-reporter`, `sbt-json-scalatest-reporter`)
+  .aggregate(`jgiven-scalatest-reporter`, `json-scalatest-reporter`)
 
 lazy val `jgiven-scalatest-reporter` = (project in file("jgiven-scalatest-reporter"))
   .settings(
@@ -43,15 +43,6 @@ lazy val `json-scalatest-reporter` = (project in file("json-scalatest-reporter")
     libraryDependencies += `log4j-slf4j-impl`,
     libraryDependencies += scalatest,
     libraryDependencies += `slf4j-api`,
-    Test / parallelExecution := false
-  )
-
-lazy val `sbt-json-scalatest-reporter` = (project in file("sbt-json-scalatest-reporter"))
-  .enablePlugins(SbtPlugin)
-  .settings(
-    commonSettings,
-    scalaVersion := "2.12.13",
-    libraryDependencies += scalatest,
     Test / parallelExecution := false
   )
 
