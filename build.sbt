@@ -16,7 +16,7 @@ lazy val root = (project in file("."))
   .settings(
     commonSettings,
     name := "sbt-jgiven-scalatest-reporter",
-    scalaVersion := "2.12.13",
+    scalaVersion := "2.12.14",
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++ Seq("-Dplugin.version=" + version.value) },
     scriptedBufferLog := false
   )
