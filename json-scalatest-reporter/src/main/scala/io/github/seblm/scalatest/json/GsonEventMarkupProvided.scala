@@ -27,8 +27,7 @@ object GsonEventMarkupProvided {
 
   }
 
-  /** Needed because nameInfo, formatter, location and payload are optionals but yields to null if non
-    * present
+  /** Needed because nameInfo, formatter, location and payload are optionals but yields to null if non present
     */
   class MarkupProvidedDeserializer() extends JsonDeserializer[MarkupProvided] {
 
