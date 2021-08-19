@@ -3,7 +3,7 @@ package io.github.seblm.scalatest.jgiven
 import com.tngtech.jgiven.report.html5.{Html5ReportConfig, Html5ReportGenerator}
 import com.tngtech.jgiven.report.json.ScenarioJsonWriter
 import com.tngtech.jgiven.report.model.ExecutionStatus.{FAILED, SUCCESS}
-import com.tngtech.jgiven.report.model.StepStatus.{PASSED, FAILED => STEP_FAILED}
+import com.tngtech.jgiven.report.model.StepStatus.{FAILED => STEP_FAILED, PASSED}
 import com.tngtech.jgiven.report.model._
 import org.scalatest.ResourcefulReporter
 import org.scalatest.events._

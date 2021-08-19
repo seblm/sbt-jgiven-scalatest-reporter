@@ -129,8 +129,7 @@ object GsonScala {
   }
 
   /** Needed because some Throwables can't be serialized. For example, Gson fails to serialize TestFailedException with
-    * message:
-    * class org.scalatest.exceptions.TestFailedException declares multiple JSON fields named posOrStackDepthFun
+    * message: class org.scalatest.exceptions.TestFailedException declares multiple JSON fields named posOrStackDepthFun
     */
   class ThrowableSerializer() extends JsonSerializer[Throwable] {
 
