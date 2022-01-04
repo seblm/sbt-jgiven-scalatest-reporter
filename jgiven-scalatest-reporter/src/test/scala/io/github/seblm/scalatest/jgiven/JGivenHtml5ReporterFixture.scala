@@ -7,8 +7,8 @@ import org.scalatest.events.Event
 import java.nio.file.{Files, Paths}
 import java.util
 import scala.annotation.tailrec
+import scala.collection.JavaConverters._
 import scala.io.Source
-import scala.jdk.CollectionConverters._
 
 object JGivenHtml5ReporterFixture {
 

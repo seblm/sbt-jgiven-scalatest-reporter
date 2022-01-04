@@ -8,7 +8,7 @@ lazy val commonSettings = Seq(
   scalacOptions += "-deprecation",
   sonatypeProjectHosting :=
     Some(GitHubHosting("seblm", "sbt-jgiven-scalatest-reporter", "sebastian.lemerdy@gmail.com")),
-  version := "0.5"
+  version := "0.5-scala212"
 )
 
 lazy val root = (project in file("."))
@@ -25,7 +25,7 @@ lazy val root = (project in file("."))
 lazy val `jgiven-scalatest-reporter` = (project in file("jgiven-scalatest-reporter"))
   .settings(
     commonSettings,
-    scalaVersion := "2.13.7",
+    scalaVersion := "2.12.15",
     libraryDependencies += `jgiven-core`,
     libraryDependencies += `jgiven-html5-report`,
     libraryDependencies += `log4j-slf4j-impl`,
@@ -38,7 +38,7 @@ lazy val `jgiven-scalatest-reporter` = (project in file("jgiven-scalatest-report
 lazy val `json-scalatest-reporter` = (project in file("json-scalatest-reporter"))
   .settings(
     commonSettings,
-    scalaVersion := "2.13.7",
+    scalaVersion := "2.12.15",
     libraryDependencies += gson,
     libraryDependencies += `log4j-slf4j-impl`,
     libraryDependencies += scalatest,

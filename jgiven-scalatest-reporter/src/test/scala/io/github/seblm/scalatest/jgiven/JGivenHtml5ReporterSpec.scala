@@ -8,8 +8,8 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.{BeforeAndAfter, GivenWhenThen}
 
 import java.nio.file.{Files, Paths}
+import scala.collection.JavaConverters._
 import scala.concurrent.duration._
-import scala.jdk.CollectionConverters.MapHasAsScala
 
 class JGivenHtml5ReporterSpec extends AnyFeatureSpec with GivenWhenThen with Matchers with BeforeAndAfter {
 

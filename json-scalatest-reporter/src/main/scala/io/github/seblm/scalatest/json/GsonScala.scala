@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory.getLogger
 
 import java.lang.reflect.{ParameterizedType, Type}
 import java.util
+import scala.collection.JavaConverters._
 import scala.collection.immutable.IndexedSeq
-import scala.jdk.CollectionConverters._
 
 object GsonScala {
 

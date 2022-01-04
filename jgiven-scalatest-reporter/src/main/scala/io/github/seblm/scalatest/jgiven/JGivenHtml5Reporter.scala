@@ -12,9 +12,9 @@ import org.scalatest.featurespec.AnyFeatureSpecLike
 import java.lang.annotation.Annotation
 import java.nio.file.{Files, Paths}
 import java.util
+import scala.collection.JavaConverters._
 import scala.collection.Map
 import scala.concurrent.duration._
-import scala.jdk.CollectionConverters._
 import scala.util.Try
 
 class JGivenHtml5Reporter extends ResourcefulReporter {
@@ -56,7 +56,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
         currentSpecClass = suiteClassName.flatMap(loadSuiteClass)
         currentSpecInstance = currentSpecClass.flatMap(instantiateSuiteClass)
         currentSpecClass.map(findTagIds).map(_.asJava).foreach(report.addTags)
-        reports = reports.concat(Seq(suiteId -> report))
+        reports = reports + (suiteId -> report)
         ()
       case InfoProvided(_, message, nameInfo, _, _, _, _, _, _) =>
         nameInfo
@@ -68,7 +68,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
                 .map(previousDescription => s"$previousDescription</br>$message")
                 .getOrElse(message)
             )
-            reports = reports.concat(Seq(suiteId -> report))
+            reports = reports + (suiteId -> report)
           }
         ()
       case TestFailed(
