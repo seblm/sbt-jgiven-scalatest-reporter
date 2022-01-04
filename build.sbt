@@ -8,7 +8,7 @@ lazy val commonSettings = Seq(
   scalacOptions += "-deprecation",
   sonatypeProjectHosting :=
     Some(GitHubHosting("seblm", "sbt-jgiven-scalatest-reporter", "sebastian.lemerdy@gmail.com")),
-  version := "0.5-SNAPSHOT"
+  version := "0.5"
 )
 
 lazy val root = (project in file("."))
