@@ -4,7 +4,7 @@ object Dependencies {
 
   private val jGivenVersion = "1.2.2"
 
-  lazy val gson = "com.google.code.gson" % "gson" % "2.9.0"
+  lazy val gson = "com.google.code.gson" % "gson" % "2.9.1"
   lazy val `jgiven-core` = "com.tngtech.jgiven" % "jgiven-core" % jGivenVersion
   lazy val `jgiven-html5-report` = "com.tngtech.jgiven" % "jgiven-html5-report" % jGivenVersion
   lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j-impl" % "2.18.0" % Test
