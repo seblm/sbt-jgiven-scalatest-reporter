@@ -139,8 +139,26 @@ object GsonScala {
       logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
 
       context.serialize(
-        new Exception(s"${src.getClass.getName}${Option(src.getMessage).map(message => s": $message").getOrElse("")}")
+        new Throwable(s"${src.getClass.getName}${Option(src.getMessage).map(message => s": $message").getOrElse("")}")
       )
+    }
+
+  }
+
+  /** Needed because Throwables can't be deserialized because JsonIOException is raised with this message: <i>Failed
+    * making field 'java.lang.Throwable#detailMessage' accessible; either increase its visibility or write a custom
+    * TypeAdapter for its declaring type.</i>
+    */
+  class ThrowableDeserializer() extends JsonDeserializer[Throwable] {
+
+    private lazy val logger: Logger = getLogger(getClass)
+
+    override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Throwable = {
+      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+
+      Option(json.getAsJsonObject.get("detailMessage"))
+        .map(_.getAsString)
+        .fold(new Throwable())(detailMessage => new Throwable(detailMessage))
     }
 
   }

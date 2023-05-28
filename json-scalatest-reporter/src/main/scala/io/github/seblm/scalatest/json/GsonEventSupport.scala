@@ -78,6 +78,7 @@ object GsonEventSupport {
     .registerTypeAdapter(classOf[IndexedSeq[RecordableEvent]], new IndexedSeqSerializer[RecordableEvent]())
     .registerTypeAdapter(classOf[IndexedSeq[RecordableEvent]], new IndexedSeqDeserializer())
     .registerTypeAdapter(classOf[Throwable], new ThrowableSerializer())
+    .registerTypeAdapter(classOf[Throwable], new ThrowableDeserializer())
     .registerTypeAdapter(classOf[IndentedText], new IndentedTextSerializer())
     .registerTypeAdapter(MotionToSuppress.getClass, new ObjectSerializer[Formatter]())
     .registerTypeAdapter(classOf[AlertProvided], new AlertProvidedSerializer())

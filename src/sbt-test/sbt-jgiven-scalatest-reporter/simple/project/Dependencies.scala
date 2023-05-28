@@ -2,7 +2,7 @@ import sbt._
 
 object Dependencies {
 
-  lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j-impl" % "2.17.2"
-  lazy val scalatest = "org.scalatest" %% "scalatest" % "3.2.12"
+  lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j2-impl" % "2.20.0"
+  lazy val scalatest = "org.scalatest" %% "scalatest" % "3.2.16"
 
 }
