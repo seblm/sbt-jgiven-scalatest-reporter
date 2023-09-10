@@ -2,7 +2,7 @@ import sbt._
 
 object Dependencies {
 
-  private val jGivenVersion = "1.2.5"
+  private val jGivenVersion = "1.3.0"
 
   lazy val gson = "com.google.code.gson" % "gson" % "2.10.1"
   lazy val `jgiven-core` = "com.tngtech.jgiven" % "jgiven-core" % jGivenVersion
