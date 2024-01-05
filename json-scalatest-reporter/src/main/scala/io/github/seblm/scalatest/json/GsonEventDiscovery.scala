@@ -13,12 +13,12 @@ object GsonEventDiscovery {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class DiscoveryCompletedSerializer() extends JsonSerializer[DiscoveryCompleted] {
+  class DiscoveryCompletedSerializer extends JsonSerializer[DiscoveryCompleted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: DiscoveryCompleted, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val discoveryCompleted = serializeEvent(src, typeOfSrc, context)
       src.duration.foreach(duration => discoveryCompleted.add("duration", context.serialize(duration)))
       discoveryCompleted
@@ -28,7 +28,7 @@ object GsonEventDiscovery {
 
   /** Needed because duration, formatter, location and payload are optionals but yields to null if non present
     */
-  class DiscoveryCompletedDeserializer() extends JsonDeserializer[DiscoveryCompleted] {
+  class DiscoveryCompletedDeserializer extends JsonDeserializer[DiscoveryCompleted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
@@ -37,7 +37,7 @@ object GsonEventDiscovery {
         typeOfT: Type,
         context: JsonDeserializationContext
     ): DiscoveryCompleted = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       DiscoveryCompleted(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),

@@ -13,12 +13,12 @@ object GsonEventAlertProvided {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class AlertProvidedSerializer() extends JsonSerializer[AlertProvided] {
+  class AlertProvidedSerializer extends JsonSerializer[AlertProvided] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: AlertProvided, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val alertProvided = serializeEvent(src, typeOfSrc, context)
       alertProvided.add("message", context.serialize(src.message))
       src.nameInfo.foreach(nameInfo => alertProvided.add("nameInfo", context.serialize(nameInfo)))
@@ -31,12 +31,12 @@ object GsonEventAlertProvided {
   /** Needed because nameInfo, throwable, formatter, location and payload are optionals but yields to null if non
     * present
     */
-  class AlertProvidedDeserializer() extends JsonDeserializer[AlertProvided] {
+  class AlertProvidedDeserializer extends JsonDeserializer[AlertProvided] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): AlertProvided = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       AlertProvided(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),

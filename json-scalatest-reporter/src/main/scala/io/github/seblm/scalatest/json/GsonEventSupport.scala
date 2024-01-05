@@ -20,7 +20,6 @@ import org.scalatest.events._
 
 import java.lang.reflect.Type
 import java.util
-import scala.collection.immutable.IndexedSeq
 import scala.jdk.CollectionConverters.IterableHasAsJava
 
 object GsonEventSupport {
@@ -28,7 +27,7 @@ object GsonEventSupport {
   def toJson(events: List[Event], writer: Appendable): Unit =
     gson.toJson(events.asJavaCollection, collectionOfEventsType, writer)
 
-  lazy val eventAdapterFactory: RuntimeTypeAdapterFactory[Event] = RuntimeTypeAdapterFactory
+  private lazy val eventAdapterFactory: RuntimeTypeAdapterFactory[Event] = RuntimeTypeAdapterFactory
     .of(classOf[Event])
     .registerSubtype(classOf[AlertProvided])
     .registerSubtype(classOf[DiscoveryCompleted])
@@ -53,12 +52,12 @@ object GsonEventSupport {
     .registerSubtype(classOf[TestStarting])
     .registerSubtype(classOf[TestSucceeded])
 
-  lazy val formatterAdapterFactory: RuntimeTypeAdapterFactory[Formatter] = RuntimeTypeAdapterFactory
+  private lazy val formatterAdapterFactory: RuntimeTypeAdapterFactory[Formatter] = RuntimeTypeAdapterFactory
     .of(classOf[Formatter])
     .registerSubtype(classOf[IndentedText])
     .registerSubtype(MotionToSuppress.getClass)
 
-  lazy val locationAdapterFactory: RuntimeTypeAdapterFactory[Location] = RuntimeTypeAdapterFactory
+  private lazy val locationAdapterFactory: RuntimeTypeAdapterFactory[Location] = RuntimeTypeAdapterFactory
     .of(classOf[Location])
     .registerSubtype(classOf[TopOfClass])
     .registerSubtype(classOf[TopOfMethod])

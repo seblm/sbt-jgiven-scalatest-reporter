@@ -8,7 +8,6 @@ import org.scalatest.matchers.should.Matchers._
 import java.nio.file.Paths
 import java.time.Instant
 import java.util
-import scala.collection.immutable.IndexedSeq
 import scala.io.Source
 import scala.jdk.CollectionConverters.CollectionHasAsScala
 

@@ -8,18 +8,17 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory.getLogger
 
 import java.lang.reflect.Type
-import scala.collection.immutable.IndexedSeq
 
 object GsonEventTest {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class TestCanceledSerializer() extends JsonSerializer[TestCanceled] {
+  class TestCanceledSerializer extends JsonSerializer[TestCanceled] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: TestCanceled, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val testCanceled = serializeEvent(src, typeOfSrc, context)
       testCanceled.add("message", context.serialize(src.message))
       testCanceled.addProperty("suiteName", src.suiteName)
@@ -42,12 +41,12 @@ object GsonEventTest {
   /** Needed because suiteClassName, throwable, duration, formatter, location, rerunner and payload are optionals but
     * yields to null if non present
     */
-  class TestCanceledDeserializer() extends JsonDeserializer[TestCanceled] {
+  class TestCanceledDeserializer extends JsonDeserializer[TestCanceled] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): TestCanceled = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       TestCanceled(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -74,12 +73,12 @@ object GsonEventTest {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class TestFailedSerializer() extends JsonSerializer[TestFailed] {
+  class TestFailedSerializer extends JsonSerializer[TestFailed] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: TestFailed, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val testFailed = serializeEvent(src, typeOfSrc, context)
       testFailed.add("message", context.serialize(src.message))
       testFailed.addProperty("suiteName", src.suiteName)
@@ -105,12 +104,12 @@ object GsonEventTest {
   /** Needed because suiteClassName, throwable, duration, formatter, location, rerunner and payload are optionals but
     * yields to null if non present
     */
-  class TestFailedDeserializer() extends JsonDeserializer[TestFailed] {
+  class TestFailedDeserializer extends JsonDeserializer[TestFailed] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): TestFailed = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       TestFailed(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -138,12 +137,12 @@ object GsonEventTest {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class TestIgnoredSerializer() extends JsonSerializer[TestIgnored] {
+  class TestIgnoredSerializer extends JsonSerializer[TestIgnored] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: TestIgnored, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val testIgnored = serializeEvent(src, typeOfSrc, context)
       testIgnored.addProperty("suiteName", src.suiteName)
       testIgnored.addProperty("suiteId", src.suiteId)
@@ -157,12 +156,12 @@ object GsonEventTest {
 
   /** Needed because suiteClassName, formatter, location and payload are optionals but yields to null if non present
     */
-  class TestIgnoredDeserializer() extends JsonDeserializer[TestIgnored] {
+  class TestIgnoredDeserializer extends JsonDeserializer[TestIgnored] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): TestIgnored = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       TestIgnored(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -183,12 +182,12 @@ object GsonEventTest {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class TestPendingSerializer() extends JsonSerializer[TestPending] {
+  class TestPendingSerializer extends JsonSerializer[TestPending] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: TestPending, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val testPending = serializeEvent(src, typeOfSrc, context)
       testPending.addProperty("suiteName", src.suiteName)
       testPending.addProperty("suiteId", src.suiteId)
@@ -208,12 +207,12 @@ object GsonEventTest {
   /** Needed because suiteClassName, duration, formatter, location and payload are optionals but yields to null if non
     * present
     */
-  class TestPendingDeserializer() extends JsonDeserializer[TestPending] {
+  class TestPendingDeserializer extends JsonDeserializer[TestPending] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): TestPending = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       TestPending(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -237,12 +236,12 @@ object GsonEventTest {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class TestStartingSerializer() extends JsonSerializer[TestStarting] {
+  class TestStartingSerializer extends JsonSerializer[TestStarting] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: TestStarting, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val testStarting = serializeEvent(src, typeOfSrc, context)
       testStarting.addProperty("suiteName", src.suiteName)
       testStarting.addProperty("suiteId", src.suiteId)
@@ -258,12 +257,12 @@ object GsonEventTest {
   /** Needed because suiteClassName, formatter, location, rerunner and payload are optionals but yields to null if non
     * present
     */
-  class TestStartingDeserializer() extends JsonDeserializer[TestStarting] {
+  class TestStartingDeserializer extends JsonDeserializer[TestStarting] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): TestStarting = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       TestStarting(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -285,12 +284,12 @@ object GsonEventTest {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class TestSucceededSerializer() extends JsonSerializer[TestSucceeded] {
+  class TestSucceededSerializer extends JsonSerializer[TestSucceeded] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: TestSucceeded, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val testSucceeded = serializeEvent(src, typeOfSrc, context)
       testSucceeded.addProperty("suiteName", src.suiteName)
       testSucceeded.addProperty("suiteId", src.suiteId)
@@ -311,12 +310,12 @@ object GsonEventTest {
   /** Needed because suiteClassName, duration, formatter, location, rerunner and payload are optionals but yields to
     * null if non present
     */
-  class TestSucceededDeserializer() extends JsonDeserializer[TestSucceeded] {
+  class TestSucceededDeserializer extends JsonDeserializer[TestSucceeded] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): TestSucceeded = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       TestSucceeded(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),

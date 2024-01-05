@@ -192,7 +192,7 @@ class JGivenHtml5Reporter extends ResourcefulReporter {
     }
   }
 
-  def findTagIds(currentSpec: Class[_]): List[Tag] =
+  private def findTagIds(currentSpec: Class[_]): List[Tag] =
     currentSpec.getAnnotations
       .map(_.annotationType)
       .filter(_.getAnnotations.exists(a => a.annotationType().getName == "org.scalatest.TagAnnotation"))

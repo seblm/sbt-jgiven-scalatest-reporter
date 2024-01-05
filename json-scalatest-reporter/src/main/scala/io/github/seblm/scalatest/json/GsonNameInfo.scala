@@ -11,12 +11,12 @@ object GsonNameInfo {
 
   /** Needed because suiteClassName and testName are optionals but yields to null if non present
     */
-  class NameInfoDeserializer() extends JsonDeserializer[NameInfo] {
+  class NameInfoDeserializer extends JsonDeserializer[NameInfo] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): NameInfo = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       NameInfo(
         suiteName = jsonObject.get("suiteName").getAsString,

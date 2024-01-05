@@ -13,12 +13,12 @@ object GsonEventSuite {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class SuiteAbortedSerializer() extends JsonSerializer[SuiteAborted] {
+  class SuiteAbortedSerializer extends JsonSerializer[SuiteAborted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: SuiteAborted, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val suiteAborted = serializeEvent(src, typeOfSrc, context)
       suiteAborted.add("message", context.serialize(src.message))
       suiteAborted.addProperty("suiteName", src.suiteName)
@@ -35,12 +35,12 @@ object GsonEventSuite {
   /** Needed because throwable, duration, summary, formatter, location and payload are optionals but yields to null if
     * non present
     */
-  class SuiteAbortedDeserializer() extends JsonDeserializer[SuiteAborted] {
+  class SuiteAbortedDeserializer extends JsonDeserializer[SuiteAborted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): SuiteAborted = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       SuiteAborted(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -63,12 +63,12 @@ object GsonEventSuite {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class SuiteCompletedSerializer() extends JsonSerializer[SuiteCompleted] {
+  class SuiteCompletedSerializer extends JsonSerializer[SuiteCompleted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: SuiteCompleted, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val suiteCompleted = serializeEvent(src, typeOfSrc, context)
       suiteCompleted.addProperty("suiteName", src.suiteName)
       suiteCompleted.addProperty("suiteId", src.suiteId)
@@ -82,12 +82,12 @@ object GsonEventSuite {
 
   /** Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
     */
-  class SuiteCompletedDeserializer() extends JsonDeserializer[SuiteCompleted] {
+  class SuiteCompletedDeserializer extends JsonDeserializer[SuiteCompleted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): SuiteCompleted = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       SuiteCompleted(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -108,12 +108,12 @@ object GsonEventSuite {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class SuiteStartingSerializer() extends JsonSerializer[SuiteStarting] {
+  class SuiteStartingSerializer extends JsonSerializer[SuiteStarting] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: SuiteStarting, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val suiteStarting = serializeEvent(src, typeOfSrc, context)
       suiteStarting.addProperty("suiteName", src.suiteName)
       suiteStarting.addProperty("suiteId", src.suiteId)
@@ -127,12 +127,12 @@ object GsonEventSuite {
   /** Needed because suiteClassName, formatter, location, rerunner and payload are optionals but yields to null if non
     * present
     */
-  class SuiteStartingDeserializer() extends JsonDeserializer[SuiteStarting] {
+  class SuiteStartingDeserializer extends JsonDeserializer[SuiteStarting] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): SuiteStarting = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       SuiteStarting(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),

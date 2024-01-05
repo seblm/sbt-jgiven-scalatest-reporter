@@ -14,12 +14,12 @@ object GsonEventRun {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class RunAbortedSerializer() extends JsonSerializer[RunAborted] {
+  class RunAbortedSerializer extends JsonSerializer[RunAborted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: RunAborted, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val runAborted = serializeEvent(src, typeOfSrc, context)
       runAborted.add("message", context.serialize(src.message))
       src.throwable.foreach(throwable => runAborted.add("throwable", context.serialize(throwable)))
@@ -33,12 +33,12 @@ object GsonEventRun {
   /** Needed because throwable, duration, summary, formatter, location and payload are optionals but yields to null if
     * non present
     */
-  class RunAbortedDeserializer() extends JsonDeserializer[RunAborted] {
+  class RunAbortedDeserializer extends JsonDeserializer[RunAborted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): RunAborted = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       RunAborted(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -58,12 +58,12 @@ object GsonEventRun {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class RunCompletedSerializer() extends JsonSerializer[RunCompleted] {
+  class RunCompletedSerializer extends JsonSerializer[RunCompleted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: RunCompleted, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val runCompleted = serializeEvent(src, typeOfSrc, context)
       src.duration.foreach(duration => runCompleted.addProperty("duration", duration))
       src.summary.foreach(summary => runCompleted.add("summary", context.serialize(summary)))
@@ -74,12 +74,12 @@ object GsonEventRun {
 
   /** Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
     */
-  class RunCompletedDeserializer() extends JsonDeserializer[RunCompleted] {
+  class RunCompletedDeserializer extends JsonDeserializer[RunCompleted] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): RunCompleted = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       RunCompleted(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -97,12 +97,12 @@ object GsonEventRun {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class RunStartingSerializer() extends JsonSerializer[RunStarting] {
+  class RunStartingSerializer extends JsonSerializer[RunStarting] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: RunStarting, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val runStarting = serializeEvent(src, typeOfSrc, context)
       runStarting.addProperty("testCount", src.testCount)
       runStarting.add("configMap", context.serialize(src.configMap, new TypeToken[ConfigMap]() {}.getType))
@@ -113,12 +113,12 @@ object GsonEventRun {
 
   /** Needed because formatter, location and payload are optionals but yields to null if non present
     */
-  class RunStartingDeserializer() extends JsonDeserializer[RunStarting] {
+  class RunStartingDeserializer extends JsonDeserializer[RunStarting] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): RunStarting = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       RunStarting(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -136,12 +136,12 @@ object GsonEventRun {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class RunStoppedSerializer() extends JsonSerializer[RunStopped] {
+  class RunStoppedSerializer extends JsonSerializer[RunStopped] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: RunStopped, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val runStopped = serializeEvent(src, typeOfSrc, context)
       src.duration.foreach(duration => runStopped.addProperty("duration", duration))
       src.summary.foreach(summary => runStopped.add("summary", context.serialize(summary)))
@@ -152,12 +152,12 @@ object GsonEventRun {
 
   /** Needed because duration, summary, formatter, location and payload are optionals but yields to null if non present
     */
-  class RunStoppedDeserializer() extends JsonDeserializer[RunStopped] {
+  class RunStoppedDeserializer extends JsonDeserializer[RunStopped] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): RunStopped = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       RunStopped(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),

@@ -22,7 +22,7 @@ lazy val root = (project in file("."))
   )
   .aggregate(`jgiven-scalatest-reporter`, `json-scalatest-reporter`)
 
-lazy val `jgiven-scalatest-reporter` = (project in file("jgiven-scalatest-reporter"))
+lazy val `jgiven-scalatest-reporter` = project
   .settings(
     commonSettings,
     scalaVersion := "2.13.12",
@@ -35,7 +35,7 @@ lazy val `jgiven-scalatest-reporter` = (project in file("jgiven-scalatest-report
   )
   .dependsOn(`json-scalatest-reporter` % Test)
 
-lazy val `json-scalatest-reporter` = (project in file("json-scalatest-reporter"))
+lazy val `json-scalatest-reporter` = project
   .settings(
     commonSettings,
     scalaVersion := "2.13.12",

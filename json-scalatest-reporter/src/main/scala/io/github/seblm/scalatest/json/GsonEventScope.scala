@@ -13,12 +13,12 @@ object GsonEventScope {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class ScopeClosedSerializer() extends JsonSerializer[ScopeClosed] {
+  class ScopeClosedSerializer extends JsonSerializer[ScopeClosed] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: ScopeClosed, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val scopeClosed = serializeEvent(src, typeOfSrc, context)
       scopeClosed.add("message", context.serialize(src.message))
       scopeClosed.add("nameInfo", context.serialize(src.nameInfo, new TypeToken[NameInfo]() {}.getType))
@@ -29,12 +29,12 @@ object GsonEventScope {
 
   /** Needed because formatter, location and payload are optionals but yields to null if non present
     */
-  class ScopeClosedDeserializer() extends JsonDeserializer[ScopeClosed] {
+  class ScopeClosedDeserializer extends JsonDeserializer[ScopeClosed] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): ScopeClosed = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       ScopeClosed(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -52,12 +52,12 @@ object GsonEventScope {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class ScopeOpenedSerializer() extends JsonSerializer[ScopeOpened] {
+  class ScopeOpenedSerializer extends JsonSerializer[ScopeOpened] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: ScopeOpened, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val scopeOpened = serializeEvent(src, typeOfSrc, context)
       scopeOpened.add("message", context.serialize(src.message))
       scopeOpened.add("nameInfo", context.serialize(src.nameInfo, new TypeToken[NameInfo]() {}.getType))
@@ -68,12 +68,12 @@ object GsonEventScope {
 
   /** Needed because formatter, location and payload are optionals but yields to null if non present
     */
-  class ScopeOpenedDeserializer() extends JsonDeserializer[ScopeOpened] {
+  class ScopeOpenedDeserializer extends JsonDeserializer[ScopeOpened] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): ScopeOpened = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       ScopeOpened(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),
@@ -91,12 +91,12 @@ object GsonEventScope {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class ScopePendingSerializer() extends JsonSerializer[ScopePending] {
+  class ScopePendingSerializer extends JsonSerializer[ScopePending] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: ScopePending, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val scopePending = serializeEvent(src, typeOfSrc, context)
       scopePending.add("message", context.serialize(src.message))
       scopePending.add("nameInfo", context.serialize(src.nameInfo, new TypeToken[NameInfo]() {}.getType))
@@ -107,12 +107,12 @@ object GsonEventScope {
 
   /** Needed because formatter, location and payload are optionals but yields to null if non present
     */
-  class ScopePendingDeserializer() extends JsonDeserializer[ScopePending] {
+  class ScopePendingDeserializer extends JsonDeserializer[ScopePending] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): ScopePending = {
-      logger.debug("deserialize {} of type {}", List(json, typeOfT): _*)
+      logger.debug("deserialize {} of type {}", json, typeOfT)
       val jsonObject = json.getAsJsonObject
       ScopePending(
         ordinal = context.deserialize(jsonObject.get("ordinal"), new TypeToken[Ordinal]() {}.getType),

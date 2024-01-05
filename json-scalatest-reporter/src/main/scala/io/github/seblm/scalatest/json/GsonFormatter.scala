@@ -11,12 +11,12 @@ object GsonFormatter {
 
   /** Needed because default serializer doesn't encode type field
     */
-  class IndentedTextSerializer() extends JsonSerializer[IndentedText] {
+  class IndentedTextSerializer extends JsonSerializer[IndentedText] {
 
     private lazy val logger: Logger = getLogger(getClass)
 
     override def serialize(src: IndentedText, typeOfSrc: Type, context: JsonSerializationContext): JsonElement = {
-      logger.debug("serialize {} of type {}", List(src, typeOfSrc): _*)
+      logger.debug("serialize {} of type {}", src, typeOfSrc)
       val indentedText = new JsonObject()
       indentedText.add("type", new JsonPrimitive("IndentedText"))
       indentedText.add("formattedText", new JsonPrimitive(src.formattedText))
