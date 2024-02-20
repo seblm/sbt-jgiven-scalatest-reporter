@@ -1,5 +1,5 @@
-import Dependencies._
-import xerial.sbt.Sonatype._
+import Dependencies.*
+import xerial.sbt.Sonatype.*
 
 lazy val commonSettings = Seq(
   licenses := Seq("MIT" -> url("https://opensource.org/licenses/MIT")),
