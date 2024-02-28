@@ -25,7 +25,7 @@ lazy val root = (project in file("."))
 lazy val `jgiven-scalatest-reporter` = project
   .settings(
     commonSettings,
-    scalaVersion := "2.13.12",
+    scalaVersion := "2.13.13",
     libraryDependencies += `jgiven-core`,
     libraryDependencies += `jgiven-html5-report`,
     libraryDependencies += `log4j-slf4j-impl`,
@@ -38,7 +38,7 @@ lazy val `jgiven-scalatest-reporter` = project
 lazy val `json-scalatest-reporter` = project
   .settings(
     commonSettings,
-    scalaVersion := "2.13.12",
+    scalaVersion := "2.13.13",
     libraryDependencies += gson,
     libraryDependencies += `log4j-slf4j-impl`,
     libraryDependencies += scalatest,
