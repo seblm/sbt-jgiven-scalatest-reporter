@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
 
@@ -19,3 +22,4 @@ jobs:
           java-version: '17'
           cache: 'sbt'
       - run: sbt scalafmtCheckAll test jgiven-scalatest-reporter/publishLocal scripted
+      - uses: scalacenter/sbt-dependency-submission@v3
