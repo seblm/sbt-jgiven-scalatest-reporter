@@ -25,6 +25,7 @@ lazy val `jgiven-scalatest-reporter` = project
   .settings(
     commonSettings,
     scalaVersion := "2.13.15",
+    libraryDependencies += `commons-io`,
     libraryDependencies += `jgiven-core`,
     libraryDependencies += `jgiven-html5-report`,
     libraryDependencies += `log4j-slf4j-impl`,
