@@ -2,7 +2,7 @@ import sbt.*
 
 object Dependencies {
 
-  private val jGivenVersion = "1.3.1"
+  private val jGivenVersion = "2.0.0"
 
   lazy val `commons-io` = "commons-io" % "commons-io" % "2.18.0" % Runtime // Please remove this dependency once jgiven-html5-report will transitively depend on it
   lazy val gson = "com.google.code.gson" % "gson" % "2.11.0"
