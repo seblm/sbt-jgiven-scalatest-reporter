@@ -3,10 +3,10 @@ import sbt.*
 object Dependencies {
 
   private val jGivenVersion = "2.0.1"
-  private val sbtVersion = "1.10.6"
+  private val sbtVersion = "1.10.7"
   private val scalatestVersion = "3.2.19"
 
-  lazy val gson = "com.google.code.gson" % "gson" % "2.11.0"
+  lazy val gson = "com.google.code.gson" % "gson" % "2.12.1"
   lazy val `jgiven-core` = "com.tngtech.jgiven" % "jgiven-core" % jGivenVersion
   lazy val `jgiven-html5-report` = "com.tngtech.jgiven" % "jgiven-html5-report" % jGivenVersion exclude ("commons-io", "commons-io")
   lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j2-impl" % "2.24.3" % Test
