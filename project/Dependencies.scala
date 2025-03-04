@@ -3,7 +3,7 @@ import sbt.*
 object Dependencies {
 
   private val jGivenVersion = "2.0.1"
-  private val sbtVersion = "1.10.7"
+  private val sbtVersion = "1.10.9"
   private val scalatestVersion = "3.2.19"
 
   lazy val gson = "com.google.code.gson" % "gson" % "2.12.1"
@@ -19,12 +19,12 @@ object Dependencies {
   lazy val `sbt-actions` = "org.scala-sbt" %% "actions" % sbtVersion
   lazy val `sbt-collections` = "org.scala-sbt" %% "collections" % sbtVersion
   lazy val `sbt-core-macros` = "org.scala-sbt" %% "core-macros" % sbtVersion
-  lazy val `sbt-librarymanagement-core` = "org.scala-sbt" %% "librarymanagement-core" % "1.10.3"
+  lazy val `sbt-librarymanagement-core` = "org.scala-sbt" %% "librarymanagement-core" % "1.10.4"
   lazy val `sbt-main` = "org.scala-sbt" %% "main" % sbtVersion
   lazy val `sbt-main-settings` = "org.scala-sbt" %% "main-settings" % sbtVersion
   lazy val `sbt-task-system` = "org.scala-sbt" %% "task-system" % sbtVersion
   lazy val `sbt-testing` = "org.scala-sbt" %% "testing" % sbtVersion
   lazy val `sbt-util-position` = "org.scala-sbt" %% "util-position" % sbtVersion
-  lazy val `slf4j-api` = "org.slf4j" % "slf4j-api" % "2.0.16"
+  lazy val `slf4j-api` = "org.slf4j" % "slf4j-api" % "2.0.17"
 
 }
