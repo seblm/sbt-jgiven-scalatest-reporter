@@ -2,8 +2,8 @@ import sbt.*
 
 object Dependencies {
 
-  private val jGivenVersion = "2.0.1"
-  private val sbtVersion = "1.10.9"
+  private val jGivenVersion = "2.0.2"
+  private val sbtVersion = "1.10.10"
   private val scalatestVersion = "3.2.19"
 
   lazy val gson = "com.google.code.gson" % "gson" % "2.12.1"
