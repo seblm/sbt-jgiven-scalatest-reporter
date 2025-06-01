@@ -34,7 +34,7 @@ object JGivenHtml5ReporterFixture {
 
   @tailrec
   def applyEvents(reporter: JGivenHtml5Reporter, events: Seq[Event]): JGivenHtml5Reporter = events match {
-    case Nil => reporter
+    case Nil           => reporter
     case event :: tail =>
       reporter.apply(event)
       applyEvents(reporter, tail)
