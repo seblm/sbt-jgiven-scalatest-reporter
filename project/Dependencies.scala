@@ -3,13 +3,13 @@ import sbt.*
 object Dependencies {
 
   private val jGivenVersion = "2.0.2"
-  private val sbtVersion = "1.11.2"
+  private val sbtVersion = "1.11.3"
   private val scalatestVersion = "3.2.19"
 
   lazy val gson = "com.google.code.gson" % "gson" % "2.13.1"
   lazy val `jgiven-core` = "com.tngtech.jgiven" % "jgiven-core" % jGivenVersion
   lazy val `jgiven-html5-report` = "com.tngtech.jgiven" % "jgiven-html5-report" % jGivenVersion exclude ("commons-io", "commons-io")
-  lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j2-impl" % "2.25.0" % Test
+  lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j2-impl" % "2.25.1" % Test
   lazy val `scalatest-core` = "org.scalatest" %% "scalatest-core" % scalatestVersion
   lazy val `scalatest-featurespec` = "org.scalatest" %% "scalatest-featurespec" % scalatestVersion
   lazy val `scalatest-flatspec` = "org.scalatest" %% "scalatest-flatspec" % scalatestVersion % Test
@@ -19,7 +19,7 @@ object Dependencies {
   lazy val `sbt-actions` = "org.scala-sbt" %% "actions" % sbtVersion
   lazy val `sbt-collections` = "org.scala-sbt" %% "collections" % sbtVersion
   lazy val `sbt-core-macros` = "org.scala-sbt" %% "core-macros" % sbtVersion
-  lazy val `sbt-librarymanagement-core` = "org.scala-sbt" %% "librarymanagement-core" % sbtVersion
+  lazy val `sbt-librarymanagement-core` = "org.scala-sbt" %% "librarymanagement-core" % "1.11.2"
   lazy val `sbt-main` = "org.scala-sbt" %% "main" % sbtVersion
   lazy val `sbt-main-settings` = "org.scala-sbt" %% "main-settings" % sbtVersion
   lazy val `sbt-task-system` = "org.scala-sbt" %% "task-system" % sbtVersion
