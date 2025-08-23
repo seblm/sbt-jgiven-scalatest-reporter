@@ -24,3 +24,4 @@ jobs:
       - uses: sbt/setup-sbt@v1
       - run: sbt scalafmtCheckAll undeclaredCompileDependenciesTest unusedCompileDependenciesTest test jgiven-scalatest-reporter/publishLocal scripted
       - uses: scalacenter/sbt-dependency-submission@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
