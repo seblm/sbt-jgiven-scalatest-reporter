@@ -34,7 +34,7 @@ lazy val `sbt-jgiven-scalatest-reporter` = (project in file("."))
 lazy val `jgiven-scalatest-reporter` = project
   .settings(
     commonSettings,
-    scalaVersion := "2.13.17",
+    scalaVersion := "2.13.18",
     libraryDependencies += `jgiven-core`,
     libraryDependencies += `jgiven-html5-report`,
     libraryDependencies += `log4j-slf4j-impl`,
@@ -49,7 +49,7 @@ lazy val `jgiven-scalatest-reporter` = project
 lazy val `json-scalatest-reporter` = project
   .settings(
     commonSettings,
-    scalaVersion := "2.13.17",
+    scalaVersion := "2.13.18",
     libraryDependencies += gson,
     libraryDependencies += `log4j-slf4j-impl`,
     libraryDependencies += `scalatest-core`,
