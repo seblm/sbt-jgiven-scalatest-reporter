@@ -1,5 +1,5 @@
 version := "0.1"
-scalaVersion := "2.13.17"
+scalaVersion := "2.13.18"
 scalacOptions += "-deprecation"
 
 import Dependencies._
