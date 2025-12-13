@@ -15,7 +15,7 @@ lazy val `sbt-jgiven-scalatest-reporter` = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(
     commonSettings,
-    scalaVersion := "2.12.20",
+    scalaVersion := "2.12.21",
     libraryDependencies += `sbt-`,
     libraryDependencies += `sbt-actions`,
     libraryDependencies += `sbt-collections`,
