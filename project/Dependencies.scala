@@ -9,7 +9,7 @@ object Dependencies {
   lazy val gson = "com.google.code.gson" % "gson" % "2.13.2"
   lazy val `jgiven-core` = "com.tngtech.jgiven" % "jgiven-core" % jGivenVersion
   lazy val `jgiven-html5-report` = "com.tngtech.jgiven" % "jgiven-html5-report" % jGivenVersion exclude ("commons-io", "commons-io")
-  lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j2-impl" % "2.25.2" % Test
+  lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j2-impl" % "2.25.3" % Test
   lazy val `scalatest-core` = "org.scalatest" %% "scalatest-core" % scalatestVersion
   lazy val `scalatest-featurespec` = "org.scalatest" %% "scalatest-featurespec" % scalatestVersion
   lazy val `scalatest-flatspec` = "org.scalatest" %% "scalatest-flatspec" % scalatestVersion % Test
