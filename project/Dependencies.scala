@@ -3,13 +3,13 @@ import sbt.*
 object Dependencies {
 
   private val jGivenVersion = "2.0.3"
-  private val sbtVersion = "1.12.2"
-  private val scalatestVersion = "3.2.19"
+  private val sbtVersion = "1.12.11"
+  private val scalatestVersion = "3.2.20"
 
-  lazy val gson = "com.google.code.gson" % "gson" % "2.13.2"
+  lazy val gson = "com.google.code.gson" % "gson" % "2.14.0"
   lazy val `jgiven-core` = "com.tngtech.jgiven" % "jgiven-core" % jGivenVersion
   lazy val `jgiven-html5-report` = "com.tngtech.jgiven" % "jgiven-html5-report" % jGivenVersion exclude ("commons-io", "commons-io")
-  lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j2-impl" % "2.25.3" % Test
+  lazy val `log4j-slf4j-impl` = "org.apache.logging.log4j" % "log4j-slf4j2-impl" % "2.26.0" % Test
   lazy val `scalatest-core` = "org.scalatest" %% "scalatest-core" % scalatestVersion
   lazy val `scalatest-featurespec` = "org.scalatest" %% "scalatest-featurespec" % scalatestVersion
   lazy val `scalatest-flatspec` = "org.scalatest" %% "scalatest-flatspec" % scalatestVersion % Test
@@ -19,12 +19,12 @@ object Dependencies {
   lazy val `sbt-actions` = "org.scala-sbt" %% "actions" % sbtVersion
   lazy val `sbt-collections` = "org.scala-sbt" %% "collections" % sbtVersion
   lazy val `sbt-core-macros` = "org.scala-sbt" %% "core-macros" % sbtVersion
-  lazy val `sbt-librarymanagement-core` = "org.scala-sbt" %% "librarymanagement-core" % "1.12.0"
+  lazy val `sbt-librarymanagement-core` = "org.scala-sbt" %% "librarymanagement-core" % "1.12.2"
   lazy val `sbt-main` = "org.scala-sbt" %% "main" % sbtVersion
   lazy val `sbt-main-settings` = "org.scala-sbt" %% "main-settings" % sbtVersion
   lazy val `sbt-task-system` = "org.scala-sbt" %% "task-system" % sbtVersion
   lazy val `sbt-testing` = "org.scala-sbt" %% "testing" % sbtVersion
   lazy val `sbt-util-position` = "org.scala-sbt" %% "util-position" % sbtVersion
-  lazy val `slf4j-api` = "org.slf4j" % "slf4j-api" % "2.0.17"
+  lazy val `slf4j-api` = "org.slf4j" % "slf4j-api" % "2.0.18"
 
 }
